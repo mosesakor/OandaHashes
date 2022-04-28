@@ -7,7 +7,7 @@ const Menu = styled.div`
 display: flex;
 justify-content: space-between;
 align-items: center;
-position: relative;
+
 
 @media (max-width: 1000px) {
     overflow: hidden;
@@ -129,7 +129,7 @@ const Navbar = () => {
     return (
         <Nav>
             <Logo>
-                <img src={Atom}></img>
+                <img></img>
             </Logo>
             <Hamburger onClick={() => setIsOpen(!isOpen)}>
                 <span />
