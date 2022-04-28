@@ -138,10 +138,10 @@ const Navbar = () => {
             </Hamburger>
             <Menu isOpen={isOpen}>
                 <MenuLink>About</MenuLink>
-                <MenuLink>Investmend packages</MenuLink>
-                <MenuLink>Equipment</MenuLink>
-                <MenuLink>Referral Program</MenuLink>
-                <MenuLink>FAQ</MenuLink>
+                <MenuLink href={"/investment-packages"}>Investment packages</MenuLink>
+                <MenuLink href={"/equipment"}>Equipment</MenuLink>
+                <MenuLink href={"/referral-program"}>Referral Program</MenuLink>
+                <MenuLink href={"/faq"}>FAQ</MenuLink>
             </Menu>
             <ButtonContainer>
                 <button>Log In</button>

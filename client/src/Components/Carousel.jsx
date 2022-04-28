@@ -28,42 +28,6 @@ margin: 0 auto;
 .swiper-slide {
     min-height: 300px;
 
-    &:first-child {
-
-        div {
-            section {
-                &:after {
-                    content: '';
-                    height: 18px;
-                    display: block;
-                    overflow: hidden;
-                    background: url(${star2}) 0 0 repeat-x;
-                    margin-left: 3px;
-                    order: 3;
-                    z-index: 2;
-                    width: 20px;
-                }
-            }
-
-        }
-
-        section { 
-            &:after {
-                content: '';
-                width: 88px;
-                height: 18px;
-                display: block;
-                overflow: hidden;
-                background: url(${star2})
-                margin-left: 3px;
-                order: 3;
-                z-index: 2;
-                background: url(../img/star-v2.svg) 0 0 repeat-x;
-            }
-        }
-
-    }
-
     div {
         padding: 20px;
         margin: 0 auto;
