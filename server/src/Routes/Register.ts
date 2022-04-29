@@ -25,7 +25,7 @@ export default {
           password: string;
         };
 
-        if (await ctx.users.countDocuments({ email: data.email }) !== 0) {
+        if ((await ctx.users.countDocuments({ email: data.email })) !== 0) {
           ctx.body = {
             type: ResponseType.EmailExists,
           };

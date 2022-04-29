@@ -6,7 +6,7 @@ const enum ResponseType {
   Unauthenticated,
   Unauthorized,
   AlreadyLoggedIn,
-  InternalServerError = 0xFFFF,
+  InternalServerError = 0xffff,
 }
 
 export default ResponseType;
