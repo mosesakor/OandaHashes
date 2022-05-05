@@ -1,0 +1,46 @@
+{
+    "name": "atomic-hashes-server",
+    "version": "0.1.0",
+    "scripts": {
+        "prebuild": "eslint src --ext .ts",
+        "build": "tsc -p . --outDir build && rm -rf build/public/ && cp -r public/ build/public",
+        "start": "yarn run build && node build/index.js"
+    },
+    "private": true,
+    "dependencies": {
+        "@hapi/boom": "^9.1.4",
+        "@types/boom": "^7.3.2",
+        "@types/joi": "^17.2.3",
+        "bcrypt": "^5.0.1",
+        "joi": "^17.6.0",
+        "koa": "^2.13.4",
+        "koa-bodyparser": "^4.3.0",
+        "koa-context-validator": "^1.0.0",
+        "koa-json": "^2.0.2",
+        "koa-mongo": "^1.9.3",
+        "koa-router": "^10.1.1",
+        "koa-session": "^6.2.0",
+        "koa-static": "^5.0.0",
+        "mongodb": "^4.5.0",
+        "nodejs-snowflake": "^2.0.1"
+    },
+    "devDependencies": {
+        "@types/bcrypt": "^5.0.0",
+        "@types/koa": "^2.13.4",
+        "@types/koa-bodyparser": "^4.3.7",
+        "@types/koa-json": "^2.0.20",
+        "@types/koa-mongo": "^1.9.3",
+        "@types/koa-router": "^7.4.4",
+        "@types/koa-session": "^5.10.6",
+        "@types/koa-static": "^4.0.2",
+        "@types/node": "^17.0.29",
+        "@typescript-eslint/eslint-plugin": "^5.21.0",
+        "@typescript-eslint/parser": "^5.21.0",
+        "eslint": "^8.14.0",
+        "eslint-config-airbnb-base": "^15.0.0",
+        "eslint-config-airbnb-typescript": "^17.0.0",
+        "eslint-plugin-import": "^2.26.0",
+        "prettier": "^2.6.2",
+        "typescript": "^4.6.3"
+    }
+}
