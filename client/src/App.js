@@ -4,6 +4,7 @@ import Navbar from "./Components/Navbar.jsx"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./Routes/Home.jsx"
+import About from "./Routes/About.jsx"
 import InvestmentPackages from "./Routes/InvestmentPackages.jsx"
 import Equipment from "./Routes/Equiment.jsx"
 import ReferralProgram from "./Routes/ReferralProgram.jsx"
@@ -39,6 +40,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/About" element={<About />} />
         <Route path="/investment-packages" element={<InvestmentPackages />} />
         <Route path="/equipment" element={<Equipment />} />
         <Route path="referral-program" element={<ReferralProgram />} />

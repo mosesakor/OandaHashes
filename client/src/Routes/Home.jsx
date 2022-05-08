@@ -428,8 +428,8 @@ padding: 30px 30px;
 
 
 const Home = () => {
-    return (
-        <Container>
+  return (
+    <Container>
       <MainSection>
         <Navbar />
         <Box>
@@ -476,7 +476,7 @@ const Home = () => {
           <Text>
             <h2><span>What is</span> Greenhashes?</h2>
             <h4>Eco mining with the latest hardware for everyone</h4>
-            <p>The specificity of the company is the use of only renewable energy sources. With the help of wind turbines and solar panels, the company manages to generate electricity and provide eco-mining machines in an affordable and sustainable way.</p>
+            <p>We provide mining services that use only renewable energy. The platform is intended for both beginners and professionals in the field of cryptocurrency.</p>
             <button>Get Started</button>
           </Text>
         </About>
@@ -490,7 +490,7 @@ const Home = () => {
             <li>8 months</li>
           </Duration>
           <Content>
-            {PackageData.map (({type, img, level, duration, profit, hashes, price, btc}) => (
+            {PackageData.map(({ type, img, level, duration, profit, hashes, price, btc }) => (
               <Package type={type} img={img} level={level} duration={duration} profit={profit} hashes={hashes} price={price} btc={btc} />
             ))}
           </Content>
@@ -524,7 +524,7 @@ const Home = () => {
       </LastSection>
     </Container>
 
-    )
+  )
 }
 
 export default Home;
