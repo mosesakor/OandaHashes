@@ -8,6 +8,8 @@ import InvestmentPackages from "./Routes/InvestmentPackages.jsx"
 import Equipment from "./Routes/Equiment.jsx"
 import ReferralProgram from "./Routes/ReferralProgram.jsx"
 import Faq from "./Routes/Faq.jsx"
+import OrderPayment from "./Routes/OrderPayment.jsx"
+import Overview from "./Routes/Overview.jsx"
 
 
 import Carousel from "./Components/Carousel.jsx"
@@ -40,6 +42,8 @@ function App() {
         <Route path="/equipment" element={<Equipment />} />
         <Route path="referral-program" element={<ReferralProgram />} />
         <Route path="/faq" element={<Faq />} />
+        <Route path="/order-payment" element={<OrderPayment />} />
+        <Route path="/overview" element={<Overview />} />
       </Routes>
     </BrowserRouter>
 

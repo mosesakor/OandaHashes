@@ -39,10 +39,12 @@ padding: 150px 0 50px 0;
 h1 {
   font-size: 40px;
   line-height: 48px;
+  font-weight: 900;
 }
 
 p {
   font-size: 16px;
+  font-weight: 600;
 }
 
 @media(min-width: 980px) {
