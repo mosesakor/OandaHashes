@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-import "@fontsource/chakra-petch";
-
-
 import icon01 from "../images/navicon01.svg";
 import icon02 from "../images/navicon02.svg";
 import icon03 from "../images/navicon03.svg";
@@ -71,7 +68,6 @@ color: rgb(110, 110, 116);
 align-items: center;
 
 
-
 img {
     margin-right: 5px;
 }
@@ -107,47 +103,29 @@ color: #fff;
 @media (min-width: 1000px) {
     width: 100%;
 }
-
 `
 
 const ContentArea = styled.div`
 
 @media (min-width: 1000px) {
     width: 100%;
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-
 }
 `
 
 const Heading = styled.div`
 margin-bottom: 24px;
-display: flex;
 justify-content: space-between;
 font-family: 'Chakra Petch',sans-serif;
 `
 
-const Button = styled.button`
-    min-height: 48px;
-    padding: 10px 24px;
-    border-radius: 90px;
-    background: 0 0;
-    border: 1px solid #df852b;
-    color: #fff;
-    font-size: 14px;
-    font-family: Montserrat,sans-serif;
-    font-weight: 600;
-    cursor: pointer;
-`
-
-const PaymentBox = styled.div`
+const PayoutBox = styled.div`
 background: rgba(255, 255, 255, 0.07);
 padding: 15px;
 border-radius: 8px;
 
 @media (min-width: 1000px) {
-height: 320px;
-margin-right: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 `
 
@@ -161,18 +139,23 @@ h3 {
 }
 `
 
-const Balance = styled.div`
-    color: #ffa244;
-    font-size: 56px;
-    font-family: 'Chakra Petch',sans-serif;
-    font-weight: 500;
-    margin-bottom: 15px;
+const Body = styled.div`
+color: #df852b;
+font-size: 56px;
+font-weight: 500;
+font-family: 'Chakra Petch',sans-serif;
+
+p {
+    margin: 20px 0;
+}
 `
 
 const BalanceBox = styled.div`
+font-family: 'Chakra Petch',sans-serif;
 display: grid;
-grid-template-columns: 2fr 1fr;
+grid-template-columns: 1fr 1fr;
 font-size: 12px;
+margin-bottom: 10px;
 
 
 div {
@@ -181,9 +164,11 @@ div {
 
 p {
     color: rgb(96, 185, 103);
+    margin: 10px 0;
 }
 
 span {
+  color: #fff;
 
 }
 
@@ -192,35 +177,54 @@ span {
 }
 `
 
-const ReferralInfo = styled.div`
-margin-top: 20px;
-background: rgba(255, 255, 255, 0.07);
-padding: 10px;
-border-radius: 8px;
-
-div {
-    color: #fff;
-}
-
-@media (min-width: 1000px) {
-    margin-top: 0;
-}
+const Sect = styled.div`
 `
 
-const Body = styled.div`
-display: grid;
-grid-template-columns: 2fr 1fr;
-
-span {
-    font-size: 12px;
-    font-weight: 600;
+const Pay = styled.div`
+p {
     color: rgb(96, 185, 103);
+    margin: 10px 0;
 }
+
+button {
+    min-height: 48px;
+    padding: 10px 54px;
+    border-radius: 90px;
+    background: #df852b;
+    border: 1px solid #df852b;
+    color: #fff;
+    font-size: 14px;
+    font-family: Montserrat,sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+
 `
 
+const Input = styled.div`
+    align-items: center;
+    padding: 0px 24px;
+    min-height: 48px;
+    border: 1px solid #60b967;
+    border-radius: 90px;
+    display: flex;
 
+    input, input:active {
+        outline: none;
+        border: none;
+        width: 100%;
+        color: #60b967;
+        font-size: 14px;
+        font-family: Montserrat,sans-serif;
+        font-weight: 500;
+        background: 0 0;
+    }
+`
 
-const Overview = () => {
+const Payouts = () => {
+
     return (
         <Container>
             <Nav>
@@ -238,62 +242,61 @@ const Overview = () => {
             </Nav>
             <MainSection>
                 <Heading>
-                    <h1>Overview</h1>
+                    <h1>Payouts</h1>
                 </Heading>
                 <ContentArea>
-                    <PaymentBox>
-                        <Heading>
-                            <Header>
-                                <img src={package_icon}></img>
-                                <h3>BALANCE</h3>
-                            </Header>
-                            <Button>Cash Out</Button>
-                        </Heading>
-                        <Balance>$ 0</Balance>
-                        <BalanceBox>
-                            <div>
-                                <p>TOTAL PROFIT</p>
-                                <span>$ 0.00</span>
-                            </div>
-                            <div>
-                                <p>BTC/USD</p>
-                                <span>$ 38,720.24</span>
-                            </div>
-                            <div>
-                                <p>PROFIT FOR MONTH</p>
-                                <span>$ 0.00</span>
-                            </div>
-                        </BalanceBox>
-                    </PaymentBox>
-                    <ReferralInfo>
-                        <Heading>
-                            <Header>
-                                <img src={package_icon}></img>
-                                <h3>REFERRALS INFO</h3>
-                            </Header>
-                        </Heading>
-                        <Body>
-                            <div>
-                                <Balance>$ 0.00</Balance>
-                                <span>PROFIT</span>
-                            </div>
-                            <div>
-                                <Balance>0</Balance>
-                                <span>REFERRALS</span>
-                            </div>
+                    <PayoutBox>
+                        <Sect>
+                            <Heading>
+                                <Header>
+                                    <img src={package_icon}></img>
+                                    <h3>BALANCE STATUS</h3>
+                                </Header>
+                            </Heading>
+                            <Body>
+                                <p>BTC 0</p>
+                                <BalanceBox>
+                                    <div>
+                                        <p>WITHDRAWAL LOCKED:</p>
+                                        <span>BTC 0</span>
+                                    </div>
+                                    <div>
+                                        <p>AVAILABLE BALANCE</p>
+                                        <span>BTC 0</span>
+                                    </div>
+                                </BalanceBox>
+                            </Body>
+                        </Sect>
+                        <Sect>
+                            <Heading>
+                                <Header>
+                                    <h3>MAKE PAYOUTS</h3>
+                                </Header>
+                            </Heading>
+                            <Pay>
+                                <div>
+                                    <p>Enter wallet address:</p>
+                                    <Input>
+                                        <input></input>
+                                    </Input>
+                                </div>
+                                <div>
+                                    <p>Enter amount:</p>
+                                    <Input style={{width: '200px'}}>
+                                        <input></input>
+                                    </Input>
+                                </div>
+                                <button>Send</button>
+                            </Pay>
 
-                        </Body>
-                        
+                        </Sect>
 
-                    </ReferralInfo>
+                    </PayoutBox>
                 </ContentArea>
-                <div>
-                    
-                </div>
             </MainSection>
-
-        </Container>
+        </Container >
     )
+
 }
 
-export default Overview;
+export default Payouts;

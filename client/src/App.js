@@ -10,6 +10,7 @@ import ReferralProgram from "./Routes/ReferralProgram.jsx"
 import Faq from "./Routes/Faq.jsx"
 import OrderPayment from "./Routes/OrderPayment.jsx"
 import Overview from "./Routes/Overview.jsx"
+import Payouts from "./Routes/Payouts.jsx"
 
 
 import Carousel from "./Components/Carousel.jsx"
@@ -44,6 +45,7 @@ function App() {
         <Route path="/faq" element={<Faq />} />
         <Route path="/order-payment" element={<OrderPayment />} />
         <Route path="/overview" element={<Overview />} />
+        <Route path="/payouts" element={<Payouts />} />      
       </Routes>
     </BrowserRouter>
 
