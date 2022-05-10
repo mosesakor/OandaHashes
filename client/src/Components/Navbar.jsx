@@ -82,7 +82,7 @@ const ButtonContainer = styled.div`
   display: flex;
   cursor: pointer;
 
-  button {
+  a {
     cursor: pointer;
     color: #fff;
     border: none;
@@ -126,7 +126,9 @@ const Navbar = () => {
   return (
     <Nav>
       <Logo>
-        <img></img>
+        <a href={'/'}>
+          <img alt="AtomicHashes"></img>
+        </a>
       </Logo>
       <Hamburger onClick={() => setIsOpen(!isOpen)}>
         <span />
@@ -141,8 +143,8 @@ const Navbar = () => {
         <MenuLink href={'/faq'}>FAQ</MenuLink>
       </Menu>
       <ButtonContainer>
-        <button>Log In</button>
-        <button>Get Started</button>
+        <a>Log In</a>
+        <a>Get Started</a>
       </ButtonContainer>
     </Nav>
   );
