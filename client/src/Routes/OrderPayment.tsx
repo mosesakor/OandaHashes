@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { SetStateAction, useState } from 'react';
 import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
 
-import PackageData from '../Components/PackageData';
+import PackageData, { PackageInfo } from '../Components/PackageData';
 
 import icon01 from '../images/navicon01.svg';
 import icon02 from '../images/navicon02.svg';
@@ -164,7 +164,7 @@ const Header = styled.div`
   }
 `;
 
-const PackageInfo = styled.div`
+const Info = styled.div`
   margin-top: 15px;
 
   select {
@@ -239,22 +239,24 @@ const OrderPayment = () => {
 
   const [count, setCount] = useState(1);
   const [amount, setAmount] = useState(0.1);
-  const [packageType, setPackageType] = useState('');
+  const [packageType, setPackageType] = useState<PackageInfo>(
+    {} as PackageInfo,
+  );
 
-  const handleOnChange = (e) => {
+  const handleOnChange = (e: { target: { value: string } }) => {
     console.log(e.target.value);
     if (e.target.value !== '') {
       setCount(parseInt(e.target.value));
     }
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     getPackage(e.target.value);
     console.log(packageType);
     console.log(location.state, 'holaooo');
   };
 
-  const getPackage = (package_name) => {
+  const getPackage = (package_name: string) => {
     console.log(package_name, 'tet');
     switch (package_name) {
       case 'Silver 1':
@@ -288,7 +290,7 @@ const OrderPayment = () => {
     console.log(packageType);
   };
 
-  const handleAmount = (e) => {
+  const handleAmount = (e: any) => {
     setAmount(count * packageType['btc']);
     console.log(amount);
   };
@@ -301,19 +303,22 @@ const OrderPayment = () => {
             <Menu>
               <MenuLink>
                 {' '}
-                <img src={icon01} /> <a href="/Overview">Overview</a>
+                <img src={icon01} alt="overview icon" />{' '}
+                <a href="/overview">Overview</a>
               </MenuLink>
               <MenuLink>
-                <img src={icon02} /> <a>Buy a package</a>
+                <img src={icon02} alt="" /> <a href="/order">Buy a package</a>
               </MenuLink>
               <MenuLink>
-                <img src={icon03} /> <a>Payouts</a>
+                <img src={icon03} alt="" /> <a href="/payouts">Payouts</a>
               </MenuLink>
               <MenuLink>
-                <img src={icon04} /> <a>Order History</a>
+                <img src={icon04} alt="" />{' '}
+                <a href="/order-history">Order History</a>
               </MenuLink>
               <MenuLink>
-                <img src={icon05} /> <a>Referral Program</a>
+                <img src={icon05} alt="" />{' '}
+                <a href="/referral-program">Referral Program</a>
               </MenuLink>
             </Menu>
           </MenuLink>
@@ -335,18 +340,18 @@ const OrderPayment = () => {
                 <p>3BrjvTxezwv8w2UnVScPES5BZGQ5491nsq</p>
               </Address>
               <Barcode>
-                <img src={barcode}></img>
+                <img src={barcode} alt="barcode"></img>
               </Barcode>
             </PaymentInfo>
           </PaymentBox>
           <PackageSelector>
             <Heading>
               <Header>
-                <img src={package_icon}></img>
+                <img src={package_icon} alt="package icon"></img>
                 <h3>Selected Package</h3>
               </Header>
             </Heading>
-            <PackageInfo>
+            <Info>
               <select onChange={(e) => handleChange(e)}>
                 <option value="Silver 1">Silver1</option>
                 <option value="Silver 2">Silver 2</option>
@@ -366,9 +371,9 @@ const OrderPayment = () => {
                 </button>
                 <span>{count}</span>
                 <button onClick={() => setCount(count + 1)}>+</button>
-                <Update onClick={() => handleAmount()}>Update</Update>
+                <Update onClick={handleAmount}>Update</Update>
               </Counter>
-            </PackageInfo>
+            </Info>
             <Specification>
               <div>
                 <p>Hash</p>

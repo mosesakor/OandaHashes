@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Navbar from '../Components/Navbar.jsx';
-import Footer from '../Components/Footer.jsx';
+import Navbar from '../Components/Navbar';
+import Footer from '../Components/Footer';
 
 import background from '../images/bg2.svg';
 import icon01 from '../images/icon01.svg';
@@ -193,6 +193,7 @@ const LastSection = styled.div`
   background-color: rgba(255, 255, 255, 0.07);
   padding: 30px 30px;
 `;
+
 const About = () => {
   return (
     <Container>

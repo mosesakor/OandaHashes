@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { PackageInfo } from './PackageData';
 
 const Item = styled.div`
   background-color: rgba(255, 255, 255, 0.07);
@@ -85,33 +85,34 @@ const Footing = styled.div`
     }
   }
 `;
-const Package = ({ type, img, level, duration, profit, hashes, price }) => {
+
+const Package = (info: PackageInfo) => {
   return (
     <Item>
       <Heading>
-        <h2>{type}</h2>
-        <img src={img}></img>
+        <h2>{info.type}</h2>
+        <img src={info.img} alt="package type"></img>
       </Heading>
       <Body>
         <div>
           <p>Referral level</p>
-          <p>{level}</p>
+          <p>{info.level}</p>
         </div>
         <div>
           <p>Duration of the contract</p>
-          <p>{duration}</p>
+          <p>{info.duration}</p>
         </div>
         <div>
           <p>Daily profit</p>
-          <p>{profit}</p>
+          <p>{info.profit}</p>
         </div>
         <div>
           <p>Number of hashes</p>
-          <p>{hashes}</p>
+          <p>{info.hashes}</p>
         </div>
       </Body>
       <Footing>
-        <p>${price}</p>
+        <p>${info.price}</p>
         <button>Get Started</button>
       </Footing>
     </Item>

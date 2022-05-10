@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import Navbar from '../Components/Navbar.jsx';
+import Navbar from '../Components/Navbar';
 
-import Carousel from '../Components/Carousel.jsx';
+import Carousel from '../Components/Carousel';
 import PackageData from '../Components/PackageData';
 import Package from '../Components/Package';
 
@@ -73,13 +73,15 @@ p {
 `;
 
 const MainInfoForm = styled.div`
-margin: 0 auto;
-text-align: center;
-max-width: 580px;
+display: flex;
+align-items: left;
+padding: 2px;
+position: relative;
 
 input {
-  width: 80%;
-  height: 34px;
+  width: 100%;
+  max-width: 350px;
+  height: 64px;
   padding: 15px 24px;
   border-radius: 8px;
   background-color: #fff;
@@ -90,18 +92,24 @@ input {
 }
 
 button {
-  border: none;
-  max-width: 380px;
-  margin-top: 12px;
-  font-weight: 600;
+  display: flex;
   align-items: center;
   justify-content: center;
-  height: 68px;
+  height: 64px;
   padding: 10px 32px;
   border-radius: 8px;
   background-color: #ffa244;
   cursor: pointer;
   transition: background .25s linear;
+  text-align: center;
+  color: buttontext;
+
+  span {
+    color: #010001;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
 }
 
 @media(min-width: 980px) {
@@ -420,7 +428,9 @@ const Home = () => {
           </MainInfo>
           <MainInfoForm>
             <input placeholder="Enter e-mail"></input>
-            <button>Get Started</button>
+            <button>
+              <span>Get Started</span>
+            </button>
           </MainInfoForm>
         </Box>
       </MainSection>

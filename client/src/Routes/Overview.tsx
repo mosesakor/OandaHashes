@@ -207,7 +207,7 @@ const Body = styled.div`
   }
 `;
 
-const Overview = () => {
+export default () => {
   return (
     <Container>
       <Nav>
@@ -289,5 +289,3 @@ const Overview = () => {
     </Container>
   );
 };
-
-export default Overview;

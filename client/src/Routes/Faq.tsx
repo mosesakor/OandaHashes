@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Navbar from '../Components/Navbar.jsx';
+import Navbar from '../Components/Navbar';
 import background from '../images/bg6.svg';
-import Accordion from '../Components/Accordion.jsx';
-import Footer from '../Components/Footer.jsx';
+import Accordion from '../Components/Accordion';
+import Footer from '../Components/Footer';
 
 const Container = styled.div`
   color: #fff;

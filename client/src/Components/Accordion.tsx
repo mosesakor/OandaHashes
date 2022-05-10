@@ -11,7 +11,7 @@ const Container = styled.div`
   margin: 3rem 0;
 `;
 
-const Title = styled.div`
+const Title = styled.div<{ clicked: boolean }>`
   font-size: 18px;
   color: ${(props) => (props.clicked ? '#ffa244' : '#fff')};
   font-weight: 600;
@@ -20,7 +20,7 @@ const Title = styled.div`
   align-items: center;
 `;
 
-const Reveal = styled.div`
+const Reveal = styled.div<{ clicked: boolean }>`
   display: ${(props) => (props.clicked ? 'block' : 'none')};
   margin-top: 1rem;
   font-weight: 300;
@@ -38,7 +38,13 @@ const Indicator = styled.div`
   align-items: center;
 `;
 
-const Accordion = ({ title, children }) => {
+const Accordion = ({
+  title,
+  children,
+}: {
+  title: string;
+  children: any;
+}): JSX.Element => {
   const [collapse, setCollapse] = useState(false);
 
   return (

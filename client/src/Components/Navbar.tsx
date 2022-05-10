@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import Atom from '../images/atom.png';
 
-const Menu = styled.div`
+const Menu = styled.div<{ isOpen: boolean }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -83,6 +83,7 @@ const ButtonContainer = styled.div`
   cursor: pointer;
 
   a {
+    text-decoration: none;
     cursor: pointer;
     color: #fff;
     border: none;
@@ -136,15 +137,15 @@ const Navbar = () => {
         <span />
       </Hamburger>
       <Menu isOpen={isOpen}>
-        <MenuLink>About</MenuLink>
+        <MenuLink href={'/about'}>About</MenuLink>
         <MenuLink href={'/investment-packages'}>Investment packages</MenuLink>
         <MenuLink href={'/equipment'}>Equipment</MenuLink>
         <MenuLink href={'/referral-program'}>Referral Program</MenuLink>
         <MenuLink href={'/faq'}>FAQ</MenuLink>
       </Menu>
       <ButtonContainer>
-        <a>Log In</a>
-        <a>Get Started</a>
+        <a href={"/login"}>Log In</a>
+        <a href={'/register'}>Get Started</a>
       </ButtonContainer>
     </Nav>
   );
