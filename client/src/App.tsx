@@ -10,6 +10,8 @@ import Faq from './Routes/Faq';
 import OrderPayment from './Routes/OrderPayment';
 import Overview from './Routes/Overview';
 import Payouts from './Routes/Payouts';
+import Registration from './Routes/Registration';
+import Login from './Routes/Login';
 
 const App = () => {
   return (
@@ -24,6 +26,8 @@ const App = () => {
         <Route path="/order-payment" element={<OrderPayment />} />
         <Route path="/overview" element={<Overview />} />
         <Route path="/payouts" element={<Payouts />} />
+        <Route path="/register" element={<Registration />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>
   );
