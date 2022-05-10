@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './Routes/Home.jsx';
 import About from './Routes/About.jsx';
 import InvestmentPackages from './Routes/InvestmentPackages.jsx';
-import Equipment from './Routes/Equiment.jsx';
+import Equipment from './Routes/Equipment.jsx';
 import ReferralProgram from './Routes/ReferralProgram.jsx';
 import Faq from './Routes/Faq.jsx';
 import OrderPayment from './Routes/OrderPayment.jsx';
