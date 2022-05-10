@@ -1,32 +1,31 @@
-import React from "react"
-import styled from "styled-components"
-import Navbar from "../Components/Navbar.jsx"
-import background from "../images/atom_background.svg";
-import background2 from "../images/bg-form.svg"
+import React from 'react';
+import styled from 'styled-components';
+import Navbar from '../Components/Navbar.jsx';
+import background from '../images/atom_background.svg';
+import background2 from '../images/bg-form.svg';
 
-import Footer from "../Components/Footer"
+import Footer from '../Components/Footer';
 
 const Container = styled.div`
-color: #fff;
-overflow: hidden;
-padding-bottom: 0;
-margin-bottom: 0;
-`
+  color: #fff;
+  overflow: hidden;
+  padding-bottom: 0;
+  margin-bottom: 0;
+`;
 
 const MainSection = styled.div`
-background-image: url(${background});
-background-position: center;
-background-repeat: no-repeat;
-background-size: cover;
-padding: 0 15px 30px;
-background-attachment: fixed;
-`
-
+  background-image: url(${background});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 0 15px 30px;
+  background-attachment: fixed;
+`;
 
 const Section = styled.div`
-margin-bottom: 50px;
-padding: 10px;
-`
+  margin-bottom: 50px;
+  padding: 10px;
+`;
 
 const MainInfo = styled.div`
 max-width: 3000;
@@ -52,7 +51,7 @@ p {
   margin 0;
   text-align: left;
   padding: 50px 0px;
-  
+
   h1 {
     font-size: 64px;
     line-height: 72px;
@@ -61,7 +60,7 @@ p {
     font-size: 22px;
   }
 }
-`
+`;
 
 const MainInfoForm = styled.div`
 margin: 0 auto;
@@ -100,158 +99,152 @@ button {
   margin 0;
   text-align: left;
   display: flex;
-  
+
   button {
     margin-top: 0;
     margin-left: 10px;
     width: 300px;
   }
 }
-`
+`;
 
 const Box = styled.div`
-@media (min-width: 980px) {
-  text-align: left;
-}
-`
-
+  @media (min-width: 980px) {
+    text-align: left;
+  }
+`;
 
 const FastStart = styled.div`
-background-image: url(${background2});
-background-repeat: no-repeat;
-background-size: cover;
-background-color: #131213;
-padding: 150px 20px 20px 20px;
+  background-image: url(${background2});
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #131213;
+  padding: 150px 20px 20px 20px;
 
-@media (min-width: 980px) {
-  display: flex;
-  padding: 40px 20px 20px 20px;
-}
-
-`
+  @media (min-width: 980px) {
+    display: flex;
+    padding: 40px 20px 20px 20px;
+  }
+`;
 
 const Title = styled.div`
-text-align: center;
+  text-align: center;
 
-@media (min-width: 980px) {
-  text-align: left;
-  width: 600px;
-  margin-bottom: 20px;
+  @media (min-width: 980px) {
+    text-align: left;
+    width: 600px;
+    margin-bottom: 20px;
 
-  h2 {
-    font-size: 40px;
+    h2 {
+      font-size: 40px;
+    }
   }
-
-}
-`
+`;
 
 const Form = styled.div`
-@media (min-width: 980px) {
-  margin-top: 80px;
-  padding-left: 10%;
-}
-
-`
+  @media (min-width: 980px) {
+    margin-top: 80px;
+    padding-left: 10%;
+  }
+`;
 
 const LastSection = styled.div`
-border-top: 2px solid rgba(255,255,255,.07);
-background-color: rgba(255,255,255,.07);
-padding: 30px 30px;
-`
+  border-top: 2px solid rgba(255, 255, 255, 0.07);
+  background-color: rgba(255, 255, 255, 0.07);
+  padding: 30px 30px;
+`;
 
 const Items = styled.div`
-@media (min-width: 980px) {
-  display: grid;
-  grid-template-columns: auto auto;
-  padding: 50px;
-  text-align: center;
-}
-`
+  @media (min-width: 980px) {
+    display: grid;
+    grid-template-columns: auto auto;
+    padding: 50px;
+    text-align: center;
+  }
+`;
 
 const Item = styled.div`
-background-color: #131213;
-text-align: center;
-margin-top: 20%;
-border-radius: 10px;
-margin-left: auto;
-margin-right: auto;
-width: 75%;
-padding: 10px;
-
-
-ul { 
-  list-style-type: "🔥 ";
-  @media (min-width: 980px) { 
-    padding: 10px;
-    display: inline-block;
-    *display: inline;
-    zoom: 1
-  }
-}
-
-ul li {
-  text-align: left;
-  padding: 10px;
-  color: #5B5B5F;
-  font-size: 12px;
-}
-
-img {
-  height: 200px;
-  width: 200px;
+  background-color: #131213;
   text-align: center;
-  margin-top: -10%;
-}
+  margin-top: 20%;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+  padding: 10px;
 
-h2 {
+  ul {
+    list-style-type: '🔥 ';
+    @media (min-width: 980px) {
+      padding: 10px;
+      display: inline-block;
+      *display: inline;
+      zoom: 1;
+    }
+  }
+
+  ul li {
+    text-align: left;
+    padding: 10px;
+    color: #5b5b5f;
+    font-size: 12px;
+  }
+
+  img {
+    height: 200px;
+    width: 200px;
+    text-align: center;
+    margin-top: -10%;
+  }
+
+  h2 {
     padding: 2%;
-}
+  }
 
-p {
+  p {
     padding: 5%;
     font-size: 12px;
-    color: #6E6E74;
-}
+    color: #6e6e74;
+  }
 
-@media (max-width: 980px) {
+  @media (max-width: 980px) {
     img {
-        height: 150px;
-        width: 150px;
-        text-align: center;
-        margin-top: -15%;
+      height: 150px;
+      width: 150px;
+      text-align: center;
+      margin-top: -15%;
     }
-}
-`
+  }
+`;
 
 const ListItem = styled.div`
-border: 1px solid #131213;
-padding: 15px;
-margin: 20px;
-border-radius: 10px;
-width: 50%;
-word-wrap: break-word;
+  border: 1px solid #131213;
+  padding: 15px;
+  margin: 20px;
+  border-radius: 10px;
+  width: 50%;
+  word-wrap: break-word;
 
-@media (min-width: 980px) { 
-  display: inline-block;
-  width: 30%;
-  height: 200;
-  margin: 4px;
-  padding: 20px;
-}
+  @media (min-width: 980px) {
+    display: inline-block;
+    width: 30%;
+    height: 200;
+    margin: 4px;
+    padding: 20px;
+  }
 
-p {
-  color: #58585C;
-}
-`
+  p {
+    color: #58585c;
+  }
+`;
 
 const List = styled.div`
-@media (min-width: 980px) { 
-  padding: 10px;
-  width: 55%;
-  margin-left: 10%;
-}
-`
-
+  @media (min-width: 980px) {
+    padding: 10px;
+    width: 55%;
+    margin-left: 10%;
+  }
+`;
 
 const Equipment = () => {
   return (
@@ -261,17 +254,35 @@ const Equipment = () => {
         <Box>
           <MainInfo>
             <h1>Mining Equipment</h1>
-            <p>AtomicHashes provides an all-in-one staking solution. Let us do the work, while you earn the rewards.</p>
+            <p>
+              AtomicHashes provides an all-in-one staking solution. Let us do
+              the work, while you earn the rewards.
+            </p>
           </MainInfo>
         </Box>
       </MainSection>
       <Section>
         <Items>
           <Item>
-            <img src={"https://media.discordapp.net/attachments/775447356702851113/969254454010470440/eqp1.png?width=645&height=616"} alt="Loading image..." />
+            <img
+              src={
+                'https://media.discordapp.net/attachments/775447356702851113/969254454010470440/eqp1.png?width=645&height=616'
+              }
+              alt="Loading image..."
+            />
             <h2>Asic Whatsminer M20S 70TH/s</h2>
-            <p>MicroBT has released ASIC Whatsminer M20s 70 TH / s for Bitcoin mining on the SHA-256 algorithm.<br /><br />
-              ASIC Whatsminer M20s 70 TH / s is made of high quality aluminum, so the structure of the device is reliably protected from mechanical damage. On the sides there are special coolers in the amount of 2 pieces, which provide effective cooling, protecting the ASIC from overheating.</p><br />
+            <p>
+              MicroBT has released ASIC Whatsminer M20s 70 TH / s for Bitcoin
+              mining on the SHA-256 algorithm.
+              <br />
+              <br />
+              ASIC Whatsminer M20s 70 TH / s is made of high quality aluminum,
+              so the structure of the device is reliably protected from
+              mechanical damage. On the sides there are special coolers in the
+              amount of 2 pieces, which provide effective cooling, protecting
+              the ASIC from overheating.
+            </p>
+            <br />
             <ul>
               <li>Scrypt mining hashrate: 70Th/s</li>
               <li>Hashing algorithm: SHA256</li>
@@ -284,10 +295,23 @@ const Equipment = () => {
             </ul>
           </Item>
           <Item>
-            <img src={"https://media.discordapp.net/attachments/775447356702851113/969254454471827497/eqp2.png?width=498&height=616"} alt="Loading image..." />
+            <img
+              src={
+                'https://media.discordapp.net/attachments/775447356702851113/969254454471827497/eqp2.png?width=498&height=616'
+              }
+              alt="Loading image..."
+            />
             <h2>Miner ASIC Antminer S15</h2>
-            <p>The antminer S9 with 16nm chips, which held the lead for almost two years, was replaced by a new model - the asic Bitmain Antminer S15.<br /><br />
-              Power consumption is comparatively economical, and the case uses a lightweight but durable aluminum alloy to help speed up cooling.</p><br />
+            <p>
+              The antminer S9 with 16nm chips, which held the lead for almost
+              two years, was replaced by a new model - the asic Bitmain Antminer
+              S15.
+              <br />
+              <br />
+              Power consumption is comparatively economical, and the case uses a
+              lightweight but durable aluminum alloy to help speed up cooling.
+            </p>
+            <br />
             <ul>
               <li>Scrypt mining hashrate: 28 Th/s</li>
               <li>Hashing algorithm: SHA256</li>
@@ -305,15 +329,25 @@ const Equipment = () => {
         <List>
           <ListItem>
             <h2>Consistency</h2>
-            <p>The company has taken care of the systematization of the functions for activating packages and payments.</p>
+            <p>
+              The company has taken care of the systematization of the functions
+              for activating packages and payments.
+            </p>
           </ListItem>
           <ListItem>
             <h2>Regularity</h2>
-            <p>Regularity and automation of payments are provided for quick profit without problems.</p>
+            <p>
+              Regularity and automation of payments are provided for quick
+              profit without problems.
+            </p>
           </ListItem>
           <ListItem>
             <h2>Reliability</h2>
-            <p>The company is responsible for the security of this server and provides mining, which ensures a greater degree of confidentiality.</p>
+            <p>
+              The company is responsible for the security of this server and
+              provides mining, which ensures a greater degree of
+              confidentiality.
+            </p>
           </ListItem>
           <ListItem>
             <h2>Innovation</h2>
@@ -321,11 +355,18 @@ const Equipment = () => {
           </ListItem>
           <ListItem>
             <h2>Functionality</h2>
-            <p>Thanks to the functionality of the server, buying, withdrawing and tracking your balance are not difficult for our clients.</p>
+            <p>
+              Thanks to the functionality of the server, buying, withdrawing and
+              tracking your balance are not difficult for our clients.
+            </p>
           </ListItem>
           <ListItem>
             <h2>Individuality</h2>
-            <p>Our support team tries to individually approach each client, taking into account your wishes, we try to implement this as soon as possible for further use.</p>
+            <p>
+              Our support team tries to individually approach each client,
+              taking into account your wishes, we try to implement this as soon
+              as possible for further use.
+            </p>
           </ListItem>
         </List>
       </Section>
@@ -333,12 +374,13 @@ const Equipment = () => {
         <FastStart>
           <Title>
             <h2>
-              Try mining with GreenHashes today and get your first profit within 24 hours
+              Try mining with GreenHashes today and get your first profit within
+              24 hours
             </h2>
           </Title>
           <Form>
             <MainInfoForm>
-              <input placeholder='Enter e-mail'></input>
+              <input placeholder="Enter e-mail"></input>
               <button>Get Started</button>
             </MainInfoForm>
           </Form>
@@ -348,8 +390,7 @@ const Equipment = () => {
         <Footer />
       </LastSection>
     </Container>
-
-  )
-}
+  );
+};
 
 export default Equipment;
