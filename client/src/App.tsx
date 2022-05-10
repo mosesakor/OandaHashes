@@ -10,7 +10,6 @@ import Faq from './Routes/Faq';
 import OrderPayment from './Routes/OrderPayment';
 import Overview from './Routes/Overview';
 import Payouts from './Routes/Payouts';
-import Registration from './Routes/Registration';
 
 const App = () => {
   return (

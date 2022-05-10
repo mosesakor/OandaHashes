@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-import Navbar from './Navbar';
-
 import ig from '../images/ig.svg';
 import tel from '../images/tel.svg';
 import fb from '../images/fb.svg';
@@ -148,19 +146,19 @@ const Footer = () => {
         <Links>
           <div>
             {' '}
-            <img src={ig} />
+            <img src={ig} alt="instagram" />
           </div>
           <div>
             {' '}
-            <img src={tel} />
+            <img src={tel} alt="telegram" />
           </div>
           <div>
             {' '}
-            <img src={fb} />
+            <img src={fb} alt="facebook" />
           </div>
           <div>
             {' '}
-            <img src={twt} />
+            <img src={twt} alt="twitter" />
           </div>
         </Links>
         <Copyright>
@@ -170,7 +168,7 @@ const Footer = () => {
       </Socials>
       <Mail>
         <div>
-          <a>support@atomichashes.io</a>
+          <a href="mailto:support@atomichashes.io">support@atomichashes.io</a>
         </div>
         <div>
           <span>
@@ -181,7 +179,7 @@ const Footer = () => {
       </Mail>
       <Mail>
         <div>
-          <a>Telegram Atomichashes</a>
+          <a href="tg.io">Telegram Atomichashes</a>
         </div>
         <div>
           <span>

@@ -268,7 +268,7 @@ const Equipment = () => {
               src={
                 'https://media.discordapp.net/attachments/775447356702851113/969254454010470440/eqp1.png?width=645&height=616'
               }
-              alt="Loading image..."
+              alt=""
             />
             <h2>Asic Whatsminer M20S 70TH/s</h2>
             <p>
@@ -299,7 +299,7 @@ const Equipment = () => {
               src={
                 'https://media.discordapp.net/attachments/775447356702851113/969254454471827497/eqp2.png?width=498&height=616'
               }
-              alt="Loading image..."
+              alt=""
             />
             <h2>Miner ASIC Antminer S15</h2>
             <p>

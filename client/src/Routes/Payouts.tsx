@@ -222,20 +222,20 @@ const Payouts = () => {
             <Menu>
               <MenuLink>
                 {' '}
-                <img src={icon01} /> <a href="/overview">Overview</a>
+                <img src={icon01} alt="" /> <a href="/overview">Overview</a>
               </MenuLink>
               <MenuLink>
-                <img src={icon02} />{' '}
+                <img src={icon02} alt="" />{' '}
                 <a href="/investment-packages">Buy a package</a>
               </MenuLink>
               <MenuLink>
-                <img src={icon03} /> <a href="/payouts">Payouts</a>
+                <img src={icon03} alt="" /> <a href="/payouts">Payouts</a>
               </MenuLink>
               <MenuLink>
-                <img src={icon04} /> <a href="/order-histroy">Order History</a>
+                <img src={icon04} alt="" /> <a href="/order-histroy">Order History</a>
               </MenuLink>
               <MenuLink>
-                <img src={icon05} />{' '}
+                <img src={icon05} alt="" />{' '}
                 <a href="/referral-program">Referral Program</a>
               </MenuLink>
             </Menu>
@@ -251,7 +251,7 @@ const Payouts = () => {
             <Sect>
               <Heading>
                 <Header>
-                  <img src={package_icon}></img>
+                  <img src={package_icon} alt=""></img>
                   <h3>BALANCE STATUS</h3>
                 </Header>
               </Heading>

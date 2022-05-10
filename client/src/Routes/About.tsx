@@ -214,7 +214,7 @@ const About = () => {
         </ContentBox>
         <BrochureWrapper>
           <Brochure>
-            <img src={icon01}></img>
+            <img src={icon01} alt=""></img>
             <h3>Security and Privacy</h3>
             <p>
               We present a mining service that provides a high degree of
@@ -224,7 +224,7 @@ const About = () => {
             </p>
           </Brochure>
           <Brochure>
-            <img src={icon02}></img>
+            <img src={icon02} alt=""></img>
             <h3>Eco-friendly product</h3>
             <p>
               For the platform we offer, we have acquired high-quality and
@@ -233,7 +233,7 @@ const About = () => {
             </p>
           </Brochure>
           <Brochure>
-            <img src={icon03}></img>
+            <img src={icon03} alt=""></img>
             <h3>Instant payouts</h3>
             <p>
               The income from your mining is accrued daily using an automatic
@@ -241,7 +241,7 @@ const About = () => {
             </p>
           </Brochure>
           <Brochure>
-            <img src={icon04}></img>
+            <img src={icon04} alt=""></img>
             <h3>Stable income</h3>
             <p>
               The presence of regular payments, a variety of mining packages and
@@ -254,7 +254,7 @@ const About = () => {
       <Section>
         <AboutInfo>
           <Image>
-            <img src={about_image}></img>
+            <img src={about_image} alt=""></img>
           </Image>
           <Text>
             <h2>
