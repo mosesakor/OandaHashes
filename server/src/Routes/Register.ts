@@ -25,7 +25,12 @@ export default {
           password: string;
         };
 
-        if ((await ctx.users.countDocuments({ email: data.email })) !== 0) {
+        if (
+          (await ctx.users.countDocuments(
+            { email: { $eq: data.email } },
+            { limit: 1 },
+          )) !== 0
+        ) {
           ctx.status = 409;
           ctx.body = {
             type: ResponseType.EmailExists,
