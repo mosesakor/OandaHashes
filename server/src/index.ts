@@ -48,7 +48,6 @@ app
       methodNotAllowed: () => Boom.methodNotAllowed(),
     }),
   )
-  .use(router.middleware())
   .use(serve(path.join(__dirname, 'public')))
   .listen(8080);
 
