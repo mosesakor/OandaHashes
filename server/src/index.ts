@@ -1,29 +1,29 @@
 import Koa from 'koa';
-import Router from 'koa-router';
+import Router from '@koa/router';
 import serve from 'koa-static';
 import path from 'path';
 import json from 'koa-json';
-import session from 'koa-session';
 import bodyParser from 'koa-bodyparser';
 import mongo from 'koa-mongo';
 import Boom from '@hapi/boom';
-import mongodb from 'mongodb';
+import * as MongoDB from 'mongodb';
+
 import Register from './Routes/Register';
 import Login from './Routes/Login';
 import User from './Models/User';
-import Config from './Config';
 import ErrorHandler from './ErrorHandler';
+import GetUserInfo from './Routes/GetUserInfo';
 
 const app = new Koa();
-app.keys = ['ASFSALK^JN$L%^KsGASKGasfdsdK@#%94368204'];
 const router = new Router();
 
 Login.route(router);
 Register.route(router);
+GetUserInfo.route(router);
 
 declare module 'koa' {
   interface BaseContext {
-    users: mongodb.Collection<User>;
+    users: MongoDB.Collection<User>;
   }
 }
 
@@ -38,7 +38,6 @@ app
     });
     return next();
   })
-  .use(session(Config, app))
   .use(json({ pretty: false, param: 'pretty' }))
   .use(bodyParser())
   .use(router.routes())

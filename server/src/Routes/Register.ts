@@ -1,6 +1,6 @@
-import Router from 'koa-router';
+import Router from '@koa/router';
 import { Snowflake } from 'nodejs-snowflake';
-import bcrypt from 'bcrypt';
+import Bcrypt from 'bcrypt';
 import validator, { Joi } from 'koa-context-validator';
 import User from '../Models/User';
 import ResponseType from '../ResponseType';
@@ -26,10 +26,10 @@ export default {
         };
 
         if ((await ctx.users.countDocuments({ email: data.email })) !== 0) {
+          ctx.status = 409;
           ctx.body = {
             type: ResponseType.EmailExists,
           };
-          ctx.status = 400;
         } else {
           const user: User = {
             id: new Snowflake()
@@ -37,11 +37,12 @@ export default {
               .toString(),
             username: data.username,
             email: data.email,
-            password: await bcrypt.hash(data.password, 10),
+            password: await Bcrypt.hash(data.password, 10),
           };
 
           await ctx.users.insertOne(user);
 
+          ctx.status = 200;
           ctx.body = {
             type: ResponseType.Success,
             id: user.id,

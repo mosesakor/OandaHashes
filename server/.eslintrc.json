@@ -18,6 +18,5 @@
     }
   ],
   "plugins": ["@typescript-eslint"],
-  "ignorePatterns": "src/index.d.ts",
   "rules": {}
 }

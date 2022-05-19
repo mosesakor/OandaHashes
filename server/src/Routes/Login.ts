@@ -1,8 +1,8 @@
 import validator, { Joi } from 'koa-context-validator';
-import Router from 'koa-router';
-import bcrypt from 'bcrypt';
+import Router from '@koa/router';
+import Bcrypt from 'bcrypt';
+import * as Jwt from 'async-jsonwebtoken';
 import ResponseType from '../ResponseType';
-import UserState from '../State/UserState';
 
 export default {
   route: (router: Router) => {
@@ -17,39 +17,35 @@ export default {
       async (ctx, next) => {
         ctx.accepts('application/json');
 
-        if (ctx.session.isNew) {
-          ctx.status = 406;
+        const data = ctx.request.body as {
+          email: string;
+          password: string;
+        };
+
+        const user = await ctx.users.findOne({ email: data.email });
+
+        if (!user) {
+          ctx.status = 400;
           ctx.body = {
-            type: ResponseType.AlreadyLoggedIn,
+            type: ResponseType.UserNotFound,
+          };
+        } else if (
+          (await Bcrypt.compare(data.password, user.password)) === true
+        ) {
+          ctx.status = 200;
+          ctx.body = {
+            type: ResponseType.Success,
+            token: (
+              await Jwt.sign({ id: user.id }, user.password, {
+                expiresIn: '30d',
+              })
+            )[0],
           };
         } else {
-          const data = ctx.request.body as {
-            email: string;
-            password: string;
+          ctx.status = 400;
+          ctx.body = {
+            type: ResponseType.Unauthenticated,
           };
-
-          try {
-            const user = await ctx.users.findOne({ email: data.email });
-            if (!user) {
-              throw new Error();
-            }
-
-            if ((await bcrypt.compare(data.password, user.password)) === true) {
-              ctx.body = {
-                type: ResponseType.Success,
-                id: user.id,
-              };
-              (ctx.session.user as UserState).id = user.id;
-            } else {
-              ctx.body = {
-                type: ResponseType.Unauthenticated,
-              };
-            }
-          } catch (_) {
-            ctx.body = {
-              type: ResponseType.UserNotFound,
-            };
-          }
         }
         return next();
       },
