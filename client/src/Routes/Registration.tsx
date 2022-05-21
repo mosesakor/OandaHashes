@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Navbar from '../Components/Navbar';
 import background from '../images/atom_background.svg';
@@ -163,56 +163,150 @@ const FormPage = styled.div`
   }
 `;
 
-const Registration = () => {
-  return (
-    <Container>
-      <MainSection>
-        <Navbar />
-        <FormContainer>
-          <form>
-            <FormPage>
-              <a className="active" href="/register">
-                Registration
-              </a>
-              <a href="/login">Login</a>
-            </FormPage>
-            <FormContent>
-              <FormField>
-                <label>Username</label>
-                <input type="username" name="username" required />
-              </FormField>
-              <FormField>
-                <label>Email</label>
-                <input type="email" name="email" required />
-              </FormField>
-              <FormField>
-                <label>Password</label>
-                <input type="password" name="password" required />
-              </FormField>
-              <FormField>
-                <label>Confirm your password</label>
-                <input type="password" name="password_confirm" required />
-              </FormField>
-              <FormLink>
-                <a href="/login">Already have an account?</a>
-              </FormLink>
-              <FormAgree>
-                By clicking "Create an account" you agree to our{' '}
-                <a href="/terms">terms</a> and conditions and{' '}
-                <a href="/privacy">privacy policy</a>
-              </FormAgree>
-              <button>
-                <span>Create an account</span>
-              </button>
-            </FormContent>
-          </form>
-        </FormContainer>
-      </MainSection>
-      <LastSection>
-        <Footer />
-      </LastSection>
-    </Container>
-  );
+type RegistrationState = {
+  username: string;
+  email: string;
+  password: string;
+  passwordConfirm: string;
 };
 
-export default Registration;
+export default class Registration extends React.PureComponent<
+  {},
+  RegistrationState
+> {
+  constructor(props: {} | Readonly<{}>) {
+    super(props);
+    this.state = {
+      username: '',
+      email: '',
+      password: '',
+      passwordConfirm: '',
+    };
+    this.onClick = this.onClick.bind(this);
+  }
+
+  async onClick(e: React.MouseEvent) {
+    e.preventDefault();
+    const username = this.state.username;
+    const email = this.state.email;
+    const password = this.state.password;
+    const passwordConfirm = this.state.passwordConfirm;
+
+    if (!username || !email || !password || !passwordConfirm) {
+      alert('Please fill in all fields');
+    }
+    if (password !== passwordConfirm) {
+      alert('Passwords do not match');
+    }
+    const resp = await fetch('http://localhost:8080/api/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username, email, password }),
+    });
+    const data: { type: number; id?: string; name?: string; message?: string } =
+      await resp.json();
+    if (data.type === 0) {
+      alert(`Registration successful, User ID: ${data.id}`);
+    } else {
+      alert(`Registration failed, ${data.type}, ${data.name}, ${data.message}`);
+    }
+  }
+
+  render() {
+    return (
+      <Container>
+        <MainSection>
+          <Navbar />
+          <FormContainer>
+            <form>
+              <FormPage>
+                <a className="active" href="/register">
+                  Registration
+                </a>
+                <a href="/login">Login</a>
+              </FormPage>
+              <FormContent>
+                <FormField>
+                  <label>Username</label>
+                  <input
+                    type="username"
+                    name="username"
+                    required
+                    onChange={(e) =>
+                      this.setState((prev) => {
+                        return {
+                          username: e.target.value,
+                        };
+                      })
+                    }
+                  />
+                </FormField>
+                <FormField>
+                  <label>Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    onChange={(e) =>
+                      this.setState((prev) => {
+                        return {
+                          email: e.target.value,
+                        };
+                      })
+                    }
+                  />
+                </FormField>
+                <FormField>
+                  <label>Password</label>
+                  <input
+                    type="password"
+                    name="password"
+                    required
+                    onChange={(e) =>
+                      this.setState((prev) => {
+                        return {
+                          password: e.target.value,
+                        };
+                      })
+                    }
+                  />
+                </FormField>
+                <FormField>
+                  <label>Confirm your password</label>
+                  <input
+                    type="password"
+                    name="password_confirm"
+                    required
+                    onChange={(e) =>
+                      this.setState((prev) => {
+                        return {
+                          passwordConfirm: e.target.value,
+                        };
+                      })
+                    }
+                  />
+                </FormField>
+                <FormLink>
+                  <a href="/login">Already have an account?</a>
+                </FormLink>
+                <FormAgree>
+                  By clicking "Create an account" you agree to our{' '}
+                  <a href="/terms">terms</a> and conditions and{' '}
+                  <a href="/privacy">privacy policy</a>
+                </FormAgree>
+                <button onClick={this.onClick}>
+                  <span>Create an account</span>
+                </button>
+              </FormContent>
+            </form>
+          </FormContainer>
+        </MainSection>
+        <LastSection>
+          <Footer />
+        </LastSection>
+      </Container>
+    );
+  }
+}

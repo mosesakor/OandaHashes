@@ -141,43 +141,60 @@ const FormPage = styled.div`
   }
 `;
 
-const Login = () => {
-  return (
-    <Container>
-      <MainSection>
-        <Navbar />
-        <FormContainer>
-          <form>
-            <FormPage>
-              <a href="/register">Registration</a>
-              <a className="active" href="/login">
-                Login
-              </a>
-            </FormPage>
-            <FormContent>
-              <FormField>
-                <label>Email/Username</label>
-                <input type="email" name="email" required />
-              </FormField>
-              <FormField>
-                <label>Password</label>
-                <input type="password" name="password" required />
-              </FormField>
-              <FormLink>
-                <a href="/forgot-password">Forgot your password?</a>
-              </FormLink>
-              <button>
-                <span>Login</span>
-              </button>
-            </FormContent>
-          </form>
-        </FormContainer>
-      </MainSection>
-      <LastSection>
-        <Footer />
-      </LastSection>
-    </Container>
-  );
+type LoginState = {
+  email: string;
+  password: string;
 };
 
-export default Login;
+export default class Login extends React.PureComponent<{}, LoginState> {
+  constructor(props: {} | Readonly<{}>) {
+    super(props);
+    this.state = {
+      email: '',
+      password: '',
+    };
+  }
+
+  async onClick(e: React.MouseEvent) {
+
+  }
+
+  render() {
+    return (
+      <Container>
+        <MainSection>
+          <Navbar />
+          <FormContainer>
+            <form>
+              <FormPage>
+                <a href="/register">Registration</a>
+                <a className="active" href="/login">
+                  Login
+                </a>
+              </FormPage>
+              <FormContent>
+                <FormField>
+                  <label>Email/Username</label>
+                  <input type="email" name="email" required />
+                </FormField>
+                <FormField>
+                  <label>Password</label>
+                  <input type="password" name="password" required />
+                </FormField>
+                <FormLink>
+                  <a href="/forgot-password">Forgot your password?</a>
+                </FormLink>
+                <button onClick={this.onClick}>
+                  <span>Login</span>
+                </button>
+              </FormContent>
+            </form>
+          </FormContainer>
+        </MainSection>
+        <LastSection>
+          <Footer />
+        </LastSection>
+      </Container>
+    );
+  }
+}
