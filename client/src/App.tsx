@@ -13,6 +13,7 @@ import Payouts from './Routes/Payouts';
 import Registration from './Routes/Registration';
 import Login from './Routes/Login';
 import React from 'react';
+import { Cookies, CookiesProvider } from 'react-cookie';
 
 export default class App extends React.Component {
   render() {
@@ -29,7 +30,14 @@ export default class App extends React.Component {
           <Route path="/overview" element={<Overview />} />
           <Route path="/payouts" element={<Payouts />} />
           <Route path="/register" element={<Registration />} />
-          <Route path="/login" element={<Login />} />
+          <Route
+            path="/login"
+            element={
+              <CookiesProvider>
+                <Login />
+              </CookiesProvider>
+            }
+          />
         </Routes>
       </BrowserRouter>
     );
