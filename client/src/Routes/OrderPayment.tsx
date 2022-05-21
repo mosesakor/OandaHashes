@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { useLocation } from 'react-router-dom';
 
 import PackageData, { PackageInfo } from '../Components/PackageData';
 
@@ -234,166 +233,190 @@ const ContentArea = styled.div`
 
 const Reinvest = styled.div``;
 
-const OrderPayment = () => {
-  const location = useLocation();
-
-  const [count, setCount] = useState(1);
-  const [amount, setAmount] = useState(0.1);
-  const [packageType, setPackageType] = useState<PackageInfo>(
-    {} as PackageInfo,
-  );
-
-  const handleOnChange = (e: { target: { value: string } }) => {
-    console.log(e.target.value);
-    if (e.target.value !== '') {
-      setCount(parseInt(e.target.value));
-    }
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    getPackage(e.target.value);
-    console.log(packageType);
-    console.log(location.state, 'holaooo');
-  };
-
-  const getPackage = (package_name: string) => {
-    console.log(package_name, 'tet');
-    switch (package_name) {
-      case 'Silver 1':
-        setPackageType(PackageData[0]);
-        break;
-      case 'Silver 2':
-        setPackageType(PackageData[1]);
-        break;
-      case 'Gold 1':
-        setPackageType(PackageData[2]);
-        break;
-      case 'Gold 2':
-        setPackageType(PackageData[3]);
-        break;
-      case 'Platinum 1':
-        setPackageType(PackageData[4]);
-        break;
-      case 'Platinum 2':
-        setPackageType(PackageData[5]);
-        break;
-      case 'Diamond 1':
-        setPackageType(PackageData[6]);
-        break;
-      case 'Diamond 2':
-        setPackageType(PackageData[7]);
-        break;
-      default:
-        setPackageType(PackageData[0]);
-    }
-
-    console.log(packageType);
-  };
-
-  const handleAmount = (e: any) => {
-    setAmount(count * packageType['btc']);
-    console.log(amount);
-  };
-
-  return (
-    <Container>
-      <Nav>
-        <Menu>
-          <MenuLink>
-            <Menu>
-              <MenuLink>
-                {' '}
-                <img src={icon01} alt="overview icon" />{' '}
-                <a href="/overview">Overview</a>
-              </MenuLink>
-              <MenuLink>
-                <img src={icon02} alt="" /> <a href="/order">Buy a package</a>
-              </MenuLink>
-              <MenuLink>
-                <img src={icon03} alt="" /> <a href="/payouts">Payouts</a>
-              </MenuLink>
-              <MenuLink>
-                <img src={icon04} alt="" />{' '}
-                <a href="/order-history">Order History</a>
-              </MenuLink>
-              <MenuLink>
-                <img src={icon05} alt="" />{' '}
-                <a href="/referral-program">Referral Program</a>
-              </MenuLink>
-            </Menu>
-          </MenuLink>
-        </Menu>
-      </Nav>
-      <MainSection>
-        <Heading>
-          <h1>Order Payment</h1>
-        </Heading>
-        <ContentArea>
-          <PaymentBox>
-            <PaymentInfo>
-              <p>
-                Please send <span>{amount}</span> BTC to the following address
-                or scan the QR code.
-              </p>
-              <Address>
-                <span>Payment address</span>
-                <p>3BrjvTxezwv8w2UnVScPES5BZGQ5491nsq</p>
-              </Address>
-              <Barcode>
-                <img src={barcode} alt="barcode"></img>
-              </Barcode>
-            </PaymentInfo>
-          </PaymentBox>
-          <PackageSelector>
-            <Heading>
-              <Header>
-                <img src={package_icon} alt="package icon"></img>
-                <h3>Selected Package</h3>
-              </Header>
-            </Heading>
-            <Info>
-              <select onChange={(e) => handleChange(e)}>
-                <option value="Silver 1">Silver1</option>
-                <option value="Silver 2">Silver 2</option>
-                <option value="Gold 1">Gold 1</option>
-                <option value="Gold 2">Gold 2</option>
-                <option value="Platinum 1">Platinum 1</option>
-                <option value="Platinum 2">Platinum 2</option>
-                <option value="Diamond 1">Diamond 1</option>
-                <option value="Diamond 2">Diamond 2</option>
-              </select>
-              <Counter>
-                <p>Amount</p>
-                <button
-                  onClick={() => setCount(count === 1 ? count : count - 1)}
-                >
-                  -
-                </button>
-                <span>{count}</span>
-                <button onClick={() => setCount(count + 1)}>+</button>
-                <Update onClick={handleAmount}>Update</Update>
-              </Counter>
-            </Info>
-            <Specification>
-              <div>
-                <p>Hash</p>
-                <span>test</span>
-              </div>
-              <div>
-                <p>Duration</p>
-                <span>{}</span>
-              </div>
-              <div>
-                <p>Order Code</p>
-                <span>{}</span>
-              </div>
-            </Specification>
-          </PackageSelector>
-          <Reinvest></Reinvest>
-        </ContentArea>
-      </MainSection>
-    </Container>
-  );
+type OrderPaymentState = {
+  count: number;
+  amount: number;
+  packageType: PackageInfo;
 };
 
-export default OrderPayment;
+export default class OrderPayment extends React.PureComponent<
+  {},
+  OrderPaymentState
+> {
+  constructor(props: {} | Readonly<{}>) {
+    super(props);
+    this.state = {
+      count: 1,
+      amount: 0.1,
+      packageType: {} as PackageInfo,
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleAmount = this.handleAmount.bind(this);
+  }
+
+  getPackage(package_name: string) {
+    console.log(package_name, 'tet');
+
+    switch (package_name) {
+      case 'Silver 1':
+        this.setState({ packageType: PackageData[0] });
+        break;
+      case 'Silver 2':
+        this.setState({ packageType: PackageData[1] });
+        break;
+      case 'Gold 1':
+        this.setState({ packageType: PackageData[2] });
+        break;
+      case 'Gold 2':
+        this.setState({ packageType: PackageData[3] });
+        break;
+      case 'Platinum 1':
+        this.setState({ packageType: PackageData[4] });
+        break;
+      case 'Platinum 2':
+        this.setState({ packageType: PackageData[5] });
+        break;
+      case 'Diamond 1':
+        this.setState({ packageType: PackageData[6] });
+        break;
+      case 'Diamond 2':
+        this.setState({ packageType: PackageData[7] });
+        break;
+      default:
+        this.setState({ packageType: PackageData[0] });
+    }
+
+    console.log(this.state.packageType);
+  }
+
+  handleChange(e: React.ChangeEvent<HTMLSelectElement>) {
+    this.getPackage(e.target.value);
+    console.log(this.state.packageType);
+  }
+
+  handleAmount(e: any) {
+    this.setState((state) => {
+      return { amount: state.count * state.packageType.btc };
+    });
+    console.log(this.state.amount);
+  }
+
+  render() {
+    return (
+      <Container>
+        <Nav>
+          <Menu>
+            <MenuLink>
+              <Menu>
+                <MenuLink>
+                  {' '}
+                  <img src={icon01} alt="overview icon" />{' '}
+                  <a href="/overview">Overview</a>
+                </MenuLink>
+                <MenuLink>
+                  <img src={icon02} alt="" /> <a href="/order">Buy a package</a>
+                </MenuLink>
+                <MenuLink>
+                  <img src={icon03} alt="" /> <a href="/payouts">Payouts</a>
+                </MenuLink>
+                <MenuLink>
+                  <img src={icon04} alt="" />{' '}
+                  <a href="/order-history">Order History</a>
+                </MenuLink>
+                <MenuLink>
+                  <img src={icon05} alt="" />{' '}
+                  <a href="/referral-program">Referral Program</a>
+                </MenuLink>
+              </Menu>
+            </MenuLink>
+          </Menu>
+        </Nav>
+        <MainSection>
+          <Heading>
+            <h1>Order Payment</h1>
+          </Heading>
+          <ContentArea>
+            <PaymentBox>
+              <PaymentInfo>
+                <p>
+                  Please send <span>{this.state.amount}</span> BTC to the
+                  following address or scan the QR code.
+                </p>
+                <Address>
+                  <span>Payment address</span>
+                  <p>3BrjvTxezwv8w2UnVScPES5BZGQ5491nsq</p>
+                </Address>
+                <Barcode>
+                  <img src={barcode} alt="barcode"></img>
+                </Barcode>
+              </PaymentInfo>
+            </PaymentBox>
+            <PackageSelector>
+              <Heading>
+                <Header>
+                  <img src={package_icon} alt="package icon"></img>
+                  <h3>Selected Package</h3>
+                </Header>
+              </Heading>
+              <Info>
+                <select onChange={(e) => this.handleChange(e)}>
+                  <option value="Silver 1">Silver1</option>
+                  <option value="Silver 2">Silver 2</option>
+                  <option value="Gold 1">Gold 1</option>
+                  <option value="Gold 2">Gold 2</option>
+                  <option value="Platinum 1">Platinum 1</option>
+                  <option value="Platinum 2">Platinum 2</option>
+                  <option value="Diamond 1">Diamond 1</option>
+                  <option value="Diamond 2">Diamond 2</option>
+                </select>
+                <Counter>
+                  <p>Amount</p>
+                  <button
+                    onClick={() =>
+                      this.setState((state) => {
+                        return {
+                          count:
+                            state.count === 1 ? state.count : state.count - 1,
+                        };
+                      })
+                    }
+                  >
+                    -
+                  </button>
+                  <span>{this.state.count}</span>
+                  <button
+                    onClick={() =>
+                      this.setState((state) => {
+                        return {
+                          count: state.count + 1,
+                        };
+                      })
+                    }
+                  >
+                    +
+                  </button>
+                  <Update onClick={this.handleAmount}>Update</Update>
+                </Counter>
+              </Info>
+              <Specification>
+                <div>
+                  <p>Hash</p>
+                  <span>test</span>
+                </div>
+                <div>
+                  <p>Duration</p>
+                  <span>{}</span>
+                </div>
+                <div>
+                  <p>Order Code</p>
+                  <span>{}</span>
+                </div>
+              </Specification>
+            </PackageSelector>
+            <Reinvest></Reinvest>
+          </ContentArea>
+        </MainSection>
+      </Container>
+    );
+  }
+}

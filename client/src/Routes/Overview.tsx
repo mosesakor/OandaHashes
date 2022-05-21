@@ -207,88 +207,88 @@ const Body = styled.div`
   }
 `;
 
-const Overview = () => {
-  return (
-    <Container>
-      <Nav>
-        <Menu>
-          <MenuLink>
-            <Menu>
-              <MenuLink>
-                {' '}
-                <img src={icon01} alt="" /> <a href="/overview">Overview</a>
-              </MenuLink>
-              <MenuLink>
-                <img src={icon02} alt="" />{' '}
-                <a href="/investment-packages">Buy a package</a>
-              </MenuLink>
-              <MenuLink>
-                <img src={icon03} alt="" /> <a href="/payouts">Payouts</a>
-              </MenuLink>
-              <MenuLink>
-                <img src={icon04} alt="" />{' '}
-                <a href="/order-histroy">Order History</a>
-              </MenuLink>
-              <MenuLink>
-                <img src={icon05} alt="" />{' '}
-                <a href="/referral-program">Referral Program</a>
-              </MenuLink>
-            </Menu>
-          </MenuLink>
-        </Menu>
-      </Nav>
-      <MainSection>
-        <Heading>
-          <h1>Overview</h1>
-        </Heading>
-        <ContentArea>
-          <PaymentBox>
-            <Heading>
-              <Header>
-                <img src={package_icon} alt=""></img>
-                <h3>BALANCE</h3>
-              </Header>
-              <Button>Cash Out</Button>
-            </Heading>
-            <Balance>$ 0</Balance>
-            <BalanceBox>
-              <div>
-                <p>TOTAL PROFIT</p>
-                <span>$ 0.00</span>
-              </div>
-              <div>
-                <p>BTC/USD</p>
-                <span>$ 38,720.24</span>
-              </div>
-              <div>
-                <p>PROFIT FOR MONTH</p>
-                <span>$ 0.00</span>
-              </div>
-            </BalanceBox>
-          </PaymentBox>
-          <ReferralInfo>
-            <Heading>
-              <Header>
-                <img src={package_icon} alt=""></img>
-                <h3>REFERRALS INFO</h3>
-              </Header>
-            </Heading>
-            <Body>
-              <div>
-                <Balance>$ 0.00</Balance>
-                <span>PROFIT</span>
-              </div>
-              <div>
-                <Balance>0</Balance>
-                <span>REFERRALS</span>
-              </div>
-            </Body>
-          </ReferralInfo>
-        </ContentArea>
-        <div></div>
-      </MainSection>
-    </Container>
-  );
-};
-
-export default Overview;
+export default class Overview extends React.PureComponent {
+  render() {
+    return (
+      <Container>
+        <Nav>
+          <Menu>
+            <MenuLink>
+              <Menu>
+                <MenuLink>
+                  {' '}
+                  <img src={icon01} alt="" /> <a href="/overview">Overview</a>
+                </MenuLink>
+                <MenuLink>
+                  <img src={icon02} alt="" />{' '}
+                  <a href="/investment-packages">Buy a package</a>
+                </MenuLink>
+                <MenuLink>
+                  <img src={icon03} alt="" /> <a href="/payouts">Payouts</a>
+                </MenuLink>
+                <MenuLink>
+                  <img src={icon04} alt="" />{' '}
+                  <a href="/order-histroy">Order History</a>
+                </MenuLink>
+                <MenuLink>
+                  <img src={icon05} alt="" />{' '}
+                  <a href="/referral-program">Referral Program</a>
+                </MenuLink>
+              </Menu>
+            </MenuLink>
+          </Menu>
+        </Nav>
+        <MainSection>
+          <Heading>
+            <h1>Overview</h1>
+          </Heading>
+          <ContentArea>
+            <PaymentBox>
+              <Heading>
+                <Header>
+                  <img src={package_icon} alt=""></img>
+                  <h3>BALANCE</h3>
+                </Header>
+                <Button>Cash Out</Button>
+              </Heading>
+              <Balance>$ 0</Balance>
+              <BalanceBox>
+                <div>
+                  <p>TOTAL PROFIT</p>
+                  <span>$ 0.00</span>
+                </div>
+                <div>
+                  <p>BTC/USD</p>
+                  <span>$ 38,720.24</span>
+                </div>
+                <div>
+                  <p>PROFIT FOR MONTH</p>
+                  <span>$ 0.00</span>
+                </div>
+              </BalanceBox>
+            </PaymentBox>
+            <ReferralInfo>
+              <Heading>
+                <Header>
+                  <img src={package_icon} alt=""></img>
+                  <h3>REFERRALS INFO</h3>
+                </Header>
+              </Heading>
+              <Body>
+                <div>
+                  <Balance>$ 0.00</Balance>
+                  <span>PROFIT</span>
+                </div>
+                <div>
+                  <Balance>0</Balance>
+                  <span>REFERRALS</span>
+                </div>
+              </Body>
+            </ReferralInfo>
+          </ContentArea>
+          <div></div>
+        </MainSection>
+      </Container>
+    );
+  }
+}

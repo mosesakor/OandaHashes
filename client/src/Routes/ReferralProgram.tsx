@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 const Container = styled.div``;
 
-const ReferralProgram = () => {
-  return <Container></Container>;
-};
-
-export default ReferralProgram;
+export default class ReferralProgram extends React.PureComponent {
+  render() {
+    return <Container></Container>;
+  }
+}

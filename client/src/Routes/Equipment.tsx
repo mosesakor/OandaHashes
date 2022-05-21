@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Navbar from '../Components/Navbar.jsx';
+import Navbar from '../Components/Navbar';
 
 import background from '../images/eqp3.svg';
 import background2 from '../images/bg-form.svg';

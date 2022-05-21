@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
-import Atom from '../images/atom.png';
+// import Atom from '../images/atom.png';
 
 const Menu = styled.div<{ isOpen: boolean }>`
   display: flex;
@@ -121,34 +121,49 @@ const ButtonContainer = styled.div`
   }
 `;
 
-const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <Nav>
-      <Logo>
-        <a href={'/'}>
-          <img alt="AtomicHashes"></img>
-        </a>
-      </Logo>
-      <Hamburger onClick={() => setIsOpen(!isOpen)}>
-        <span />
-        <span />
-        <span />
-      </Hamburger>
-      <Menu isOpen={isOpen}>
-        <MenuLink href={'/about'}>About</MenuLink>
-        <MenuLink href={'/investment-packages'}>Investment packages</MenuLink>
-        <MenuLink href={'/equipment'}>Equipment</MenuLink>
-        <MenuLink href={'/referral-program'}>Referral Program</MenuLink>
-        <MenuLink href={'/faq'}>FAQ</MenuLink>
-      </Menu>
-      <ButtonContainer>
-        <a href={"/login"}>Log In</a>
-        <a href={'/register'}>Get Started</a>
-      </ButtonContainer>
-    </Nav>
-  );
+type NavbarState = {
+  isOpen: boolean;
 };
 
-export default Navbar;
+export default class Navbar extends React.PureComponent<{}, NavbarState> {
+  constructor(props: {} | Readonly<{}>) {
+    super(props);
+    this.state = {
+      isOpen: false,
+    };
+  }
+
+  render() {
+    return (
+      <Nav>
+        <Logo>
+          <a href={'/'}>
+            <img alt="AtomicHashes"></img>
+          </a>
+        </Logo>
+        <Hamburger
+          onClick={() =>
+            this.setState((state) => {
+              return { isOpen: !state.isOpen };
+            })
+          }
+        >
+          <span />
+          <span />
+          <span />
+        </Hamburger>
+        <Menu isOpen={this.state.isOpen}>
+          <MenuLink href={'/about'}>About</MenuLink>
+          <MenuLink href={'/investment-packages'}>Investment packages</MenuLink>
+          <MenuLink href={'/equipment'}>Equipment</MenuLink>
+          <MenuLink href={'/referral-program'}>Referral Program</MenuLink>
+          <MenuLink href={'/faq'}>FAQ</MenuLink>
+        </Menu>
+        <ButtonContainer>
+          <a href={'/login'}>Log In</a>
+          <a href={'/register'}>Get Started</a>
+        </ButtonContainer>
+      </Nav>
+    );
+  }
+}

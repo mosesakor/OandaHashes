@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -9,7 +9,7 @@ import 'swiper/css/navigation';
 import { Pagination, Navigation, Autoplay } from 'swiper';
 
 import star1 from '../images/star-v1.svg';
-import star2 from '../images/star-v2.svg';
+// import star2 from '../images/star-v2.svg';
 
 const Container = styled.div`
   height: 460px;
@@ -90,124 +90,134 @@ const Container = styled.div`
   }
 `;
 
-const Carousel = () => {
-  const [slidesPerView, setSlidesPerView] = useState(1);
-
-  useEffect(() => {
-    function handleResize() {
-      if (window.innerWidth > 648 && window.innerWidth < 980) {
-        setSlidesPerView(2);
-      } else if (window.innerWidth > 980) {
-        setSlidesPerView(3);
-      } else {
-        setSlidesPerView(1);
-      }
-    }
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  return (
-    <Container>
-      <Swiper
-        slidesPerView={slidesPerView}
-        autoplay={{
-          delay: 15000,
-          disableOnInteraction: false,
-        }}
-        pagination={{
-          type: 'bullets',
-          clickable: true,
-        }}
-        navigation={false}
-        modules={[Pagination, Navigation, Autoplay]}
-        effect={'cards'}
-        grabCursor={true}
-        className="mySwiper"
-      >
-        <SwiperSlide>
-          <div>
-            <section></section>
-            <h4>I have very positive impressions</h4>
-            <p>
-              I have very positive impressions using this platform. A reliable
-              company with profitable mining and fast payouts. The company has a
-              certificate and friendly competent support.
-            </p>
-            <span> RIMON MORAN</span>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div>
-            <section></section>
-            <h4>My first payments have already arrived</h4>
-            <p>
-              This project has a lot advantages with round-the-clock support
-              that solves any of your questions and problems, detailed
-              analytics, daily payments that betray the reputation and trust in
-              the client, as well as a security system for your assets In
-              general I recommend working wiht them, my first payments ahve
-              already dropped into the wallet.
-            </p>
-            <span> Job Mac</span>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div>
-            <section></section>
-            <h4>Best mining site</h4>
-            <p>
-              A perfect site for investment, very profitable and pleasant
-              packages, very quick payback. I can recommend this service to
-              everyone, Best wishes to you!.{' '}
-            </p>
-            <span> John Hogue</span>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div>
-            <section></section>
-            <h4>I highly recommend...</h4>
-            <p>
-              This is a fairly stable platform for earning money. They have very
-              interesting palns, they are profitable. The referral program is
-              interesting. At first I had some problems, but the technical
-              support successfully helped me. I recommend it.
-            </p>
-            <span>Luis Farry</span>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div>
-            <section></section>
-            <h4>I've already found something for myself</h4>
-            <p>
-              Everyone can easily mine on this site. Support team is always
-              there to help with questions. One of the most important things on
-              this site is that withdrawal requests from AtomicHashes are
-              processed instanly thanks to the automated payout process, so you
-              don't have to wait a day or two. I already found something for
-              myself.
-            </p>
-            <span>William Hossen</span>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div>
-            <section></section>
-            <h4>I have very positive impressions</h4>
-            <p>
-              I have very positive impressions from using this platform. A
-              reliable company with profitable mining and fast payouts. the
-              company has a certificate and friendly, competent support.
-            </p>
-            <span>Rimon Moran</span>
-          </div>
-        </SwiperSlide>
-      </Swiper>
-    </Container>
-  );
+type CarouselState = {
+  slidesPerView: number;
 };
 
-export default Carousel;
+export default class Carousel extends React.PureComponent<{}, CarouselState> {
+  constructor(props: {} | Readonly<{}>) {
+    super(props);
+    this.state = { slidesPerView: 1 };
+
+    this.handleResize();
+    this.handleResize = this.handleResize.bind(this);
+    window.addEventListener('resize', this.handleResize);
+  }
+
+  handleResize() {
+    if (window.innerWidth > 648 && window.innerWidth < 980) {
+      this.setState({ slidesPerView: 2 });
+    } else if (window.innerWidth > 980) {
+      this.setState({ slidesPerView: 3 });
+    } else {
+      this.setState({ slidesPerView: 1 });
+    }
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize);
+  }
+
+  render() {
+    return (
+      <Container>
+        <Swiper
+          slidesPerView={this.state.slidesPerView}
+          autoplay={{
+            delay: 15000,
+            disableOnInteraction: false,
+          }}
+          pagination={{
+            type: 'bullets',
+            clickable: true,
+          }}
+          navigation={false}
+          modules={[Pagination, Navigation, Autoplay]}
+          effect={'cards'}
+          grabCursor={true}
+          className="mySwiper"
+        >
+          <SwiperSlide>
+            <div>
+              <section></section>
+              <h4>I have very positive impressions</h4>
+              <p>
+                I have very positive impressions using this platform. A reliable
+                company with profitable mining and fast payouts. The company has
+                a certificate and friendly competent support.
+              </p>
+              <span> RIMON MORAN</span>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div>
+              <section></section>
+              <h4>My first payments have already arrived</h4>
+              <p>
+                This project has a lot advantages with round-the-clock support
+                that solves any of your questions and problems, detailed
+                analytics, daily payments that betray the reputation and trust
+                in the client, as well as a security system for your assets In
+                general I recommend working wiht them, my first payments ahve
+                already dropped into the wallet.
+              </p>
+              <span> Job Mac</span>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div>
+              <section></section>
+              <h4>Best mining site</h4>
+              <p>
+                A perfect site for investment, very profitable and pleasant
+                packages, very quick payback. I can recommend this service to
+                everyone, Best wishes to you!.{' '}
+              </p>
+              <span> John Hogue</span>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div>
+              <section></section>
+              <h4>I highly recommend...</h4>
+              <p>
+                This is a fairly stable platform for earning money. They have
+                very interesting palns, they are profitable. The referral
+                program is interesting. At first I had some problems, but the
+                technical support successfully helped me. I recommend it.
+              </p>
+              <span>Luis Farry</span>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div>
+              <section></section>
+              <h4>I've already found something for myself</h4>
+              <p>
+                Everyone can easily mine on this site. Support team is always
+                there to help with questions. One of the most important things
+                on this site is that withdrawal requests from AtomicHashes are
+                processed instanly thanks to the automated payout process, so
+                you don't have to wait a day or two. I already found something
+                for myself.
+              </p>
+              <span>William Hossen</span>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div>
+              <section></section>
+              <h4>I have very positive impressions</h4>
+              <p>
+                I have very positive impressions from using this platform. A
+                reliable company with profitable mining and fast payouts. the
+                company has a certificate and friendly, competent support.
+              </p>
+              <span>Rimon Moran</span>
+            </div>
+          </SwiperSlide>
+        </Swiper>
+      </Container>
+    );
+  }
+}

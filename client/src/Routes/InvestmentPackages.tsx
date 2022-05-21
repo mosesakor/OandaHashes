@@ -64,38 +64,27 @@ const LastSection = styled.div`
   margin-top: 8++0px;
 `;
 
-const InvestmentPackages = () => {
-  return (
-    <Container>
-      <MainSection>
-        <Navbar />
-        <h1>Investment Packages</h1>
-        <p>
-          Choose any valid package that meets all your requirements. Each
-          package has its own advantage.
-        </p>
-      </MainSection>
-      <PackageSection>
-        {PackageData.map(
-          ({ type, img, level, duration, profit, hashes, price, btc }) => (
-            <Package
-              type={type}
-              img={img}
-              level={level}
-              duration={duration}
-              profit={profit}
-              hashes={hashes}
-              price={price}
-              btc={btc}
-            />
-          ),
-        )}
-      </PackageSection>
-      <LastSection>
-        <Footer />
-      </LastSection>
-    </Container>
-  );
-};
-
-export default InvestmentPackages;
+export default class InvestmentPackages extends React.PureComponent {
+  render() {
+    return (
+      <Container>
+        <MainSection>
+          <Navbar />
+          <h1>Investment Packages</h1>
+          <p>
+            Choose any valid package that meets all your requirements. Each
+            package has its own advantage.
+          </p>
+        </MainSection>
+        <PackageSection>
+          {PackageData.map((v) => (
+            <Package info={v} />
+          ))}
+        </PackageSection>
+        <LastSection>
+          <Footer />
+        </LastSection>
+      </Container>
+    );
+  }
+}

@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 import { PackageInfo } from './PackageData';
 
@@ -86,37 +87,41 @@ const Footing = styled.div`
   }
 `;
 
-const Package = (info: PackageInfo) => {
-  return (
-    <Item>
-      <Heading>
-        <h2>{info.type}</h2>
-        <img src={info.img} alt="package type"></img>
-      </Heading>
-      <Body>
-        <div>
-          <p>Referral level</p>
-          <p>{info.level}</p>
-        </div>
-        <div>
-          <p>Duration of the contract</p>
-          <p>{info.duration}</p>
-        </div>
-        <div>
-          <p>Daily profit</p>
-          <p>{info.profit}</p>
-        </div>
-        <div>
-          <p>Number of hashes</p>
-          <p>{info.hashes}</p>
-        </div>
-      </Body>
-      <Footing>
-        <p>${info.price}</p>
-        <button>Get Started</button>
-      </Footing>
-    </Item>
-  );
+type PackageProps = {
+  info: PackageInfo;
 };
 
-export default Package;
+export default class Package extends React.PureComponent<PackageProps> {
+  render() {
+    return (
+      <Item>
+        <Heading>
+          <h2>{this.props.info.type}</h2>
+          <img src={this.props.info.img} alt="package type"></img>
+        </Heading>
+        <Body>
+          <div>
+            <p>Referral level</p>
+            <p>{this.props.info.level}</p>
+          </div>
+          <div>
+            <p>Duration of the contract</p>
+            <p>{this.props.info.duration}</p>
+          </div>
+          <div>
+            <p>Daily profit</p>
+            <p>{this.props.info.profit}</p>
+          </div>
+          <div>
+            <p>Number of hashes</p>
+            <p>{this.props.info.hashes}</p>
+          </div>
+        </Body>
+        <Footing>
+          <p>${this.props.info.price}</p>
+          <button>Get Started</button>
+        </Footing>
+      </Item>
+    );
+  }
+}

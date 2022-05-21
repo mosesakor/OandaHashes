@@ -194,91 +194,92 @@ const LastSection = styled.div`
   padding: 30px 30px;
 `;
 
-const About = () => {
-  return (
-    <Container>
-      <MainSection>
-        <Navbar />
-        <Box>
-          <MainInfo>
-            <h1>ABOUT</h1>
-            <p>Green Hashes opens access to eco-mining for everyone</p>
-          </MainInfo>
-        </Box>
-      </MainSection>
-      <Section>
-        <ContentBox>
-          <h2>
-            <span>Services</span>That We Continue To Improve
-          </h2>
-        </ContentBox>
-        <BrochureWrapper>
-          <Brochure>
-            <img src={icon01} alt=""></img>
-            <h3>Security and Privacy</h3>
-            <p>
-              We present a mining service that provides a high degree of
-              confidentiality. In this regard, we keep the collection of user
-              data to a minimum and are responsible for the security of this
-              server.
-            </p>
-          </Brochure>
-          <Brochure>
-            <img src={icon02} alt=""></img>
-            <h3>Eco-friendly product</h3>
-            <p>
-              For the platform we offer, we have acquired high-quality and
-              environmentally friendly equipment for the efficiency of the
-              mining system.
-            </p>
-          </Brochure>
-          <Brochure>
-            <img src={icon03} alt=""></img>
-            <h3>Instant payouts</h3>
-            <p>
-              The income from your mining is accrued daily using an automatic
-              payout system.
-            </p>
-          </Brochure>
-          <Brochure>
-            <img src={icon04} alt=""></img>
-            <h3>Stable income</h3>
-            <p>
-              The presence of regular payments, a variety of mining packages and
-              an easy-to-use interface provide you with a stable and passive
-              income.
-            </p>
-          </Brochure>
-        </BrochureWrapper>
-      </Section>
-      <Section>
-        <AboutInfo>
-          <Image>
-            <img src={about_image} alt=""></img>
-          </Image>
-          <Text>
+export default class About extends React.PureComponent {
+  render() {
+    return (
+      <Container>
+        <MainSection>
+          <Navbar />
+          <Box>
+            <MainInfo>
+              <h1>ABOUT</h1>
+              <p>Green Hashes opens access to eco-mining for everyone</p>
+            </MainInfo>
+          </Box>
+        </MainSection>
+        <Section>
+          <ContentBox>
             <h2>
-              <span>Cloud</span> Mining
+              <span>Services</span>That We Continue To Improve
             </h2>
-            <p>
-              We provide mining services that use only renewable energy. The
-              platform is intended for both beginners and professionals in the
-              field of cryptocurrency.
-            </p>
-            <p>
-              When using our service, our users get the opportunity to control
-              their profits around the clock, and the company at that time takes
-              care of all the concerns to ensure safety and smooth operation.
-            </p>
-            <button>Get Started</button>
-          </Text>
-        </AboutInfo>
-      </Section>
-      <LastSection>
-        <Footer />
-      </LastSection>
-    </Container>
-  );
-};
-
-export default About;
+          </ContentBox>
+          <BrochureWrapper>
+            <Brochure>
+              <img src={icon01} alt=""></img>
+              <h3>Security and Privacy</h3>
+              <p>
+                We present a mining service that provides a high degree of
+                confidentiality. In this regard, we keep the collection of user
+                data to a minimum and are responsible for the security of this
+                server.
+              </p>
+            </Brochure>
+            <Brochure>
+              <img src={icon02} alt=""></img>
+              <h3>Eco-friendly product</h3>
+              <p>
+                For the platform we offer, we have acquired high-quality and
+                environmentally friendly equipment for the efficiency of the
+                mining system.
+              </p>
+            </Brochure>
+            <Brochure>
+              <img src={icon03} alt=""></img>
+              <h3>Instant payouts</h3>
+              <p>
+                The income from your mining is accrued daily using an automatic
+                payout system.
+              </p>
+            </Brochure>
+            <Brochure>
+              <img src={icon04} alt=""></img>
+              <h3>Stable income</h3>
+              <p>
+                The presence of regular payments, a variety of mining packages
+                and an easy-to-use interface provide you with a stable and
+                passive income.
+              </p>
+            </Brochure>
+          </BrochureWrapper>
+        </Section>
+        <Section>
+          <AboutInfo>
+            <Image>
+              <img src={about_image} alt=""></img>
+            </Image>
+            <Text>
+              <h2>
+                <span>Cloud</span> Mining
+              </h2>
+              <p>
+                We provide mining services that use only renewable energy. The
+                platform is intended for both beginners and professionals in the
+                field of cryptocurrency.
+              </p>
+              <p>
+                When using our service, our users get the opportunity to control
+                their profits around the clock, and the company at that time
+                takes care of all the concerns to ensure safety and smooth
+                operation.
+              </p>
+              <button>Get Started</button>
+            </Text>
+          </AboutInfo>
+        </Section>
+        <LastSection>
+          <Footer />
+        </LastSection>
+      </Container>
+    );
+  }
+}

@@ -331,143 +331,132 @@ const LastSection = styled.div`
   padding: 30px 30px;
 `;
 
-const Home = () => {
-  return (
-    <Container>
-      <MainSection>
-        <Navbar />
-        <Box>
-          <MainInfo>
-            <h1>The Future of Cryptocurrency Mining is Here</h1>
-            <p>AtomicHashes opens access to eco-mining for everyone</p>
-          </MainInfo>
-          <MainInfoForm>
-            <input placeholder="Enter e-mail"></input>
-            <button>
-              <span>Get Started</span>
-            </button>
-          </MainInfoForm>
-        </Box>
-      </MainSection>
-      <Section>
-        <ContentBox>
-          <h2>
-            <span>Services</span>That We Continue To Improve
-          </h2>
-        </ContentBox>
-        <BrochureWrapper>
-          <Brochure>
-            <img src={icon01} alt=""></img>
-            <h3>Security and Privacy</h3>
-            <p>
-              We present a mining service that provides a high degree of
-              confidentiality. In this regard, we keep the collection of user
-              data to a minimum and are responsible for the security of this
-              server.
-            </p>
-          </Brochure>
-          <Brochure>
-            <img src={icon02} alt=""></img>
-            <h3>Eco-friendly product</h3>
-            <p>
-              For the platform we offer, we have acquired high-quality and
-              environmentally friendly equipment for the efficiency of the
-              mining system.
-            </p>
-          </Brochure>
-          <Brochure>
-            <img src={icon03} alt=""></img>
-            <h3>Instant payouts</h3>
-            <p>
-              The income from your mining is accrued daily using an automatic
-              payout system.
-            </p>
-          </Brochure>
-          <Brochure>
-            <img src={icon04} alt=""></img>
-            <h3>Stable income</h3>
-            <p>
-              The presence of regular payments, a variety of mining packages and
-              an easy-to-use interface provide you with a stable and passive
-              income.
-            </p>
-          </Brochure>
-        </BrochureWrapper>
-      </Section>
-      <Section>
-        <About>
-          <Image>
-            <img src={about_image} alt=""></img>
-          </Image>
-          <Text>
-            <h2>
-              <span>What is</span> Greenhashes?
-            </h2>
-            <h4>Eco mining with the latest hardware for everyone</h4>
-            <p>
-              We provide mining services that use only renewable energy. The
-              platform is intended for both beginners and professionals in the
-              field of cryptocurrency.
-            </p>
-            <button>Get Started</button>
-          </Text>
-        </About>
-      </Section>
-      <Section>
-        <Packages>
-          <h2>Our Plans</h2>
-          <Duration>
-            <li>2 months</li>
-            <li>4 months</li>
-            <li>8 months</li>
-          </Duration>
-          <Content>
-            {PackageData.map(
-              ({ type, img, level, duration, profit, hashes, price, btc }) => (
-                <Package
-                  type={type}
-                  img={img}
-                  level={level}
-                  duration={duration}
-                  profit={profit}
-                  hashes={hashes}
-                  price={price}
-                  btc={btc}
-                />
-              ),
-            )}
-          </Content>
-        </Packages>
-      </Section>
-      <Section>
-        <FastStart>
-          <Title>
-            <h2>
-              Try mining with GreenHashes today and get your first profit within
-              24 hours
-            </h2>
-          </Title>
-          <Form>
+export default class Home extends React.PureComponent {
+  render() {
+    return (
+      <Container>
+        <MainSection>
+          <Navbar />
+          <Box>
+            <MainInfo>
+              <h1>The Future of Cryptocurrency Mining is Here</h1>
+              <p>AtomicHashes opens access to eco-mining for everyone</p>
+            </MainInfo>
             <MainInfoForm>
               <input placeholder="Enter e-mail"></input>
-              <button>Get Started</button>
+              <button>
+                <span>Get Started</span>
+              </button>
             </MainInfoForm>
-          </Form>
-        </FastStart>
-      </Section>
-      <Section>
-        <Title>
-          <h2>Reviews</h2>
-        </Title>
-        <Slider>
-          <Carousel />
-        </Slider>
-      </Section>
-      <LastSection>
-        <Footer />
-      </LastSection>
-    </Container>
-  );
-};
-
-export default Home;
+          </Box>
+        </MainSection>
+        <Section>
+          <ContentBox>
+            <h2>
+              <span>Services</span>That We Continue To Improve
+            </h2>
+          </ContentBox>
+          <BrochureWrapper>
+            <Brochure>
+              <img src={icon01} alt=""></img>
+              <h3>Security and Privacy</h3>
+              <p>
+                We present a mining service that provides a high degree of
+                confidentiality. In this regard, we keep the collection of user
+                data to a minimum and are responsible for the security of this
+                server.
+              </p>
+            </Brochure>
+            <Brochure>
+              <img src={icon02} alt=""></img>
+              <h3>Eco-friendly product</h3>
+              <p>
+                For the platform we offer, we have acquired high-quality and
+                environmentally friendly equipment for the efficiency of the
+                mining system.
+              </p>
+            </Brochure>
+            <Brochure>
+              <img src={icon03} alt=""></img>
+              <h3>Instant payouts</h3>
+              <p>
+                The income from your mining is accrued daily using an automatic
+                payout system.
+              </p>
+            </Brochure>
+            <Brochure>
+              <img src={icon04} alt=""></img>
+              <h3>Stable income</h3>
+              <p>
+                The presence of regular payments, a variety of mining packages
+                and an easy-to-use interface provide you with a stable and
+                passive income.
+              </p>
+            </Brochure>
+          </BrochureWrapper>
+        </Section>
+        <Section>
+          <About>
+            <Image>
+              <img src={about_image} alt=""></img>
+            </Image>
+            <Text>
+              <h2>
+                <span>What is</span> Greenhashes?
+              </h2>
+              <h4>Eco mining with the latest hardware for everyone</h4>
+              <p>
+                We provide mining services that use only renewable energy. The
+                platform is intended for both beginners and professionals in the
+                field of cryptocurrency.
+              </p>
+              <button>Get Started</button>
+            </Text>
+          </About>
+        </Section>
+        <Section>
+          <Packages>
+            <h2>Our Plans</h2>
+            <Duration>
+              <li>2 months</li>
+              <li>4 months</li>
+              <li>8 months</li>
+            </Duration>
+            <Content>
+              {PackageData.map((v) => (
+                <Package info={v} />
+              ))}
+            </Content>
+          </Packages>
+        </Section>
+        <Section>
+          <FastStart>
+            <Title>
+              <h2>
+                Try mining with GreenHashes today and get your first profit
+                within 24 hours
+              </h2>
+            </Title>
+            <Form>
+              <MainInfoForm>
+                <input placeholder="Enter e-mail"></input>
+                <button>Get Started</button>
+              </MainInfoForm>
+            </Form>
+          </FastStart>
+        </Section>
+        <Section>
+          <Title>
+            <h2>Reviews</h2>
+          </Title>
+          <Slider>
+            <Carousel />
+          </Slider>
+        </Section>
+        <LastSection>
+          <Footer />
+        </LastSection>
+      </Container>
+    );
+  }
+}

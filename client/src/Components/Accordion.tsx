@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useState } from 'react';
 
 const Container = styled.div`
   cursor: pointer;
@@ -38,26 +37,48 @@ const Indicator = styled.div`
   align-items: center;
 `;
 
-const Accordion = ({
-  title,
-  children,
-}: {
+type AccordionProps = {
   title: string;
   children: any;
-}): JSX.Element => {
-  const [collapse, setCollapse] = useState(false);
-
-  return (
-    <Container>
-      <Title onClick={() => setCollapse(!collapse)} clicked={collapse}>
-        <Name>
-          <span>{title}</span>
-        </Name>
-        {collapse ? <Indicator>-</Indicator> : <Indicator>+</Indicator>}
-      </Title>
-      <Reveal clicked={collapse}>{children}</Reveal>
-    </Container>
-  );
 };
 
-export default Accordion;
+type AccordionState = {
+  collapse: boolean;
+};
+
+export default class Accordion extends React.PureComponent<
+  AccordionProps,
+  AccordionState
+> {
+  constructor(props: AccordionProps | Readonly<AccordionProps>) {
+    super(props);
+    this.state = {
+      collapse: false,
+    };
+  }
+
+  render() {
+    return (
+      <Container>
+        <Title
+          onClick={() =>
+            this.setState((state) => {
+              return { collapse: !state.collapse };
+            })
+          }
+          clicked={this.state.collapse}
+        >
+          <Name>
+            <span>{this.props.title}</span>
+          </Name>
+          {this.state.collapse ? (
+            <Indicator>-</Indicator>
+          ) : (
+            <Indicator>+</Indicator>
+          )}
+        </Title>
+        <Reveal clicked={this.state.collapse}>{this.props.children}</Reveal>
+      </Container>
+    );
+  }
+}
