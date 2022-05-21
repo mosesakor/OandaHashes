@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Navbar from '../Components/Navbar';
 import background from '../images/atom_background.svg';
 import Footer from '../Components/Footer';
+import Cookies from 'universal-cookie';
 
 const Container = styled.div`
   color: #fff;
@@ -153,10 +154,42 @@ export default class Login extends React.PureComponent<{}, LoginState> {
       email: '',
       password: '',
     };
+    this.onClick = this.onClick.bind(this);
   }
 
   async onClick(e: React.MouseEvent) {
+    e.preventDefault();
+    const email = this.state.email;
+    const password = this.state.password;
 
+    if (!email || !password) {
+      alert('Please fill in all fields');
+      return;
+    }
+    const resp = await fetch('http://localhost:8080/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password }),
+    });
+    const data: {
+      type: number;
+      token?: string;
+      name?: string;
+      message?: string;
+    } = await resp.json();
+    if (data.type === 0) {
+      alert(`Registration successful`);
+      const cookies = new Cookies();
+      cookies.set('token', data.token, {
+        secure: true,
+        sameSite: 'strict',
+        path: '/',
+      });
+    } else {
+      alert(`Registration failed, ${data.type}, ${data.name}, ${data.message}`);
+    }
   }
 
   render() {
@@ -175,11 +208,23 @@ export default class Login extends React.PureComponent<{}, LoginState> {
               <FormContent>
                 <FormField>
                   <label>Email/Username</label>
-                  <input type="email" name="email" required />
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    onChange={(e) => this.setState({ email: e.target.value })}
+                  />
                 </FormField>
                 <FormField>
                   <label>Password</label>
-                  <input type="password" name="password" required />
+                  <input
+                    type="password"
+                    name="password"
+                    required
+                    onChange={(e) =>
+                      this.setState({ password: e.target.value })
+                    }
+                  />
                 </FormField>
                 <FormLink>
                   <a href="/forgot-password">Forgot your password?</a>
