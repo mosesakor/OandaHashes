@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Navbar from '../Components/Navbar';
 import background from '../images/atom_background.svg';
@@ -194,9 +194,11 @@ export default class Registration extends React.PureComponent<
 
     if (!username || !email || !password || !passwordConfirm) {
       alert('Please fill in all fields');
+      return;
     }
     if (password !== passwordConfirm) {
       alert('Passwords do not match');
+      return;
     }
     const resp = await fetch('http://localhost:8080/api/register', {
       method: 'POST',
@@ -235,11 +237,7 @@ export default class Registration extends React.PureComponent<
                     name="username"
                     required
                     onChange={(e) =>
-                      this.setState((prev) => {
-                        return {
-                          username: e.target.value,
-                        };
-                      })
+                      this.setState({ username: e.target.value })
                     }
                   />
                 </FormField>
@@ -249,13 +247,7 @@ export default class Registration extends React.PureComponent<
                     type="email"
                     name="email"
                     required
-                    onChange={(e) =>
-                      this.setState((prev) => {
-                        return {
-                          email: e.target.value,
-                        };
-                      })
-                    }
+                    onChange={(e) => this.setState({ email: e.target.value })}
                   />
                 </FormField>
                 <FormField>
@@ -265,11 +257,7 @@ export default class Registration extends React.PureComponent<
                     name="password"
                     required
                     onChange={(e) =>
-                      this.setState((prev) => {
-                        return {
-                          password: e.target.value,
-                        };
-                      })
+                      this.setState({ password: e.target.value })
                     }
                   />
                 </FormField>
@@ -280,11 +268,7 @@ export default class Registration extends React.PureComponent<
                     name="password_confirm"
                     required
                     onChange={(e) =>
-                      this.setState((prev) => {
-                        return {
-                          passwordConfirm: e.target.value,
-                        };
-                      })
+                      this.setState({ passwordConfirm: e.target.value })
                     }
                   />
                 </FormField>
