@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import ig from '../images/ig.svg';
@@ -128,67 +128,66 @@ const Mail = styled.div`
   }
 `;
 
-const Telegram = styled.div``;
-
-const Footer = () => {
-  return (
-    <Container>
-      <Nav>
-        <Menu>
-          <MenuLink>About</MenuLink>
-          <MenuLink>Investmend packages</MenuLink>
-          <MenuLink>Equipment</MenuLink>
-          <MenuLink>Referral Program</MenuLink>
-          <MenuLink>FAQ</MenuLink>
-        </Menu>
-      </Nav>
-      <Socials>
-        <Links>
+export default class Footer extends React.PureComponent {
+  render() {
+    return (
+      <Container>
+        <Nav>
+          <Menu>
+            <MenuLink>About</MenuLink>
+            <MenuLink>Investmend packages</MenuLink>
+            <MenuLink>Equipment</MenuLink>
+            <MenuLink>Referral Program</MenuLink>
+            <MenuLink>FAQ</MenuLink>
+          </Menu>
+        </Nav>
+        <Socials>
+          <Links>
+            <div>
+              {' '}
+              <img src={ig} alt="instagram" />
+            </div>
+            <div>
+              {' '}
+              <img src={tel} alt="telegram" />
+            </div>
+            <div>
+              {' '}
+              <img src={fb} alt="facebook" />
+            </div>
+            <div>
+              {' '}
+              <img src={twt} alt="twitter" />
+            </div>
+          </Links>
+          <Copyright>
+            <span>Copyright © 2021</span>
+            <span>Privacy policy</span>
+          </Copyright>
+        </Socials>
+        <Mail>
           <div>
-            {' '}
-            <img src={ig} alt="instagram" />
+            <a href="mailto:support@atomichashes.io">support@atomichashes.io</a>
           </div>
           <div>
-            {' '}
-            <img src={tel} alt="telegram" />
+            <span>
+              If you have any questions about the service or have suggestions,
+              write to us
+            </span>
+          </div>
+        </Mail>
+        <Mail>
+          <div>
+            <a href="tg.io">Telegram Atomichashes</a>
           </div>
           <div>
-            {' '}
-            <img src={fb} alt="facebook" />
+            <span>
+              Join our telegram there is alot of useful information on
+              investments
+            </span>
           </div>
-          <div>
-            {' '}
-            <img src={twt} alt="twitter" />
-          </div>
-        </Links>
-        <Copyright>
-          <span>Copyright © 2021</span>
-          <span>Privacy policy</span>
-        </Copyright>
-      </Socials>
-      <Mail>
-        <div>
-          <a href="mailto:support@atomichashes.io">support@atomichashes.io</a>
-        </div>
-        <div>
-          <span>
-            If you have any questions about the service or have suggestions,
-            write to us
-          </span>
-        </div>
-      </Mail>
-      <Mail>
-        <div>
-          <a href="tg.io">Telegram Atomichashes</a>
-        </div>
-        <div>
-          <span>
-            Join our telegram there is alot of useful information on investments
-          </span>
-        </div>
-      </Mail>
-    </Container>
-  );
-};
-
-export default Footer;
+        </Mail>
+      </Container>
+    );
+  }
+}

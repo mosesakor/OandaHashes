@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import icon01 from '../images/navicon01.svg';
@@ -213,89 +213,90 @@ const Input = styled.div`
   }
 `;
 
-const Payouts = () => {
-  return (
-    <Container>
-      <Nav>
-        <Menu>
-          <MenuLink>
-            <Menu>
-              <MenuLink>
-                {' '}
-                <img src={icon01} alt="" /> <a href="/overview">Overview</a>
-              </MenuLink>
-              <MenuLink>
-                <img src={icon02} alt="" />{' '}
-                <a href="/investment-packages">Buy a package</a>
-              </MenuLink>
-              <MenuLink>
-                <img src={icon03} alt="" /> <a href="/payouts">Payouts</a>
-              </MenuLink>
-              <MenuLink>
-                <img src={icon04} alt="" /> <a href="/order-histroy">Order History</a>
-              </MenuLink>
-              <MenuLink>
-                <img src={icon05} alt="" />{' '}
-                <a href="/referral-program">Referral Program</a>
-              </MenuLink>
-            </Menu>
-          </MenuLink>
-        </Menu>
-      </Nav>
-      <MainSection>
-        <Heading>
-          <h1>Payouts</h1>
-        </Heading>
-        <ContentArea>
-          <PayoutBox>
-            <Sect>
-              <Heading>
-                <Header>
-                  <img src={package_icon} alt=""></img>
-                  <h3>BALANCE STATUS</h3>
-                </Header>
-              </Heading>
-              <Body>
-                <p>BTC 0</p>
-                <BalanceBox>
+export default class Payouts extends React.PureComponent {
+  render() {
+    return (
+      <Container>
+        <Nav>
+          <Menu>
+            <MenuLink>
+              <Menu>
+                <MenuLink>
+                  {' '}
+                  <img src={icon01} alt="" /> <a href="/overview">Overview</a>
+                </MenuLink>
+                <MenuLink>
+                  <img src={icon02} alt="" />{' '}
+                  <a href="/investment-packages">Buy a package</a>
+                </MenuLink>
+                <MenuLink>
+                  <img src={icon03} alt="" /> <a href="/payouts">Payouts</a>
+                </MenuLink>
+                <MenuLink>
+                  <img src={icon04} alt="" />{' '}
+                  <a href="/order-histroy">Order History</a>
+                </MenuLink>
+                <MenuLink>
+                  <img src={icon05} alt="" />{' '}
+                  <a href="/referral-program">Referral Program</a>
+                </MenuLink>
+              </Menu>
+            </MenuLink>
+          </Menu>
+        </Nav>
+        <MainSection>
+          <Heading>
+            <h1>Payouts</h1>
+          </Heading>
+          <ContentArea>
+            <PayoutBox>
+              <Sect>
+                <Heading>
+                  <Header>
+                    <img src={package_icon} alt=""></img>
+                    <h3>BALANCE STATUS</h3>
+                  </Header>
+                </Heading>
+                <Body>
+                  <p>BTC 0</p>
+                  <BalanceBox>
+                    <div>
+                      <p>WITHDRAWAL LOCKED:</p>
+                      <span>BTC 0</span>
+                    </div>
+                    <div>
+                      <p>AVAILABLE BALANCE</p>
+                      <span>BTC 0</span>
+                    </div>
+                  </BalanceBox>
+                </Body>
+              </Sect>
+              <Sect>
+                <Heading>
+                  <Header>
+                    <h3>MAKE PAYOUTS</h3>
+                  </Header>
+                </Heading>
+                <Pay>
                   <div>
-                    <p>WITHDRAWAL LOCKED:</p>
-                    <span>BTC 0</span>
+                    <p>Enter wallet address:</p>
+                    <Input>
+                      <input></input>
+                    </Input>
                   </div>
                   <div>
-                    <p>AVAILABLE BALANCE</p>
-                    <span>BTC 0</span>
+                    <p>Enter amount:</p>
+                    <Input style={{ width: '200px' }}>
+                      <input></input>
+                    </Input>
                   </div>
-                </BalanceBox>
-              </Body>
-            </Sect>
-            <Sect>
-              <Heading>
-                <Header>
-                  <h3>MAKE PAYOUTS</h3>
-                </Header>
-              </Heading>
-              <Pay>
-                <div>
-                  <p>Enter wallet address:</p>
-                  <Input>
-                    <input></input>
-                  </Input>
-                </div>
-                <div>
-                  <p>Enter amount:</p>
-                  <Input style={{ width: '200px' }}>
-                    <input></input>
-                  </Input>
-                </div>
-                <button>Send</button>
-              </Pay>
-            </Sect>
-          </PayoutBox>
-        </ContentArea>
-      </MainSection>
-    </Container>
-  );
-};
-
-export default Payouts;
+                  <button>Send</button>
+                </Pay>
+              </Sect>
+            </PayoutBox>
+          </ContentArea>
+        </MainSection>
+      </Container>
+    );
+  }
+}
