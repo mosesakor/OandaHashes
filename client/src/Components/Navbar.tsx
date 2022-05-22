@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Cookies from 'universal-cookie';
 
 // import Atom from '../images/atom.png';
 
@@ -11,8 +12,14 @@ const Menu = styled.div<{ isOpen: boolean }>`
   @media (max-width: 1000px) {
     overflow: hidden;
     flex-direction: column;
-    max-height: ${({ isOpen }) => (isOpen ? '300px' : '0')};
-    transition: max-height 0.3s ease-in;
+    max-height: ${({ isOpen }) => (isOpen ? '15rem' : '0')};
+    background-color: ${({ isOpen }) =>
+      isOpen ? 'var(--background-secondary)' : 'transparent'};
+    border-radius: 8px;
+    border: 1px solid
+      ${({ isOpen }) => (isOpen ? 'var(--border)' : 'transparent')};
+    transition: max-height 0.3s ease, background-color 0.15s ease,
+      border 0.15s ease;
     width: 100%;
     align-items: flex-end;
   }
@@ -84,32 +91,31 @@ const ButtonContainer = styled.div`
 
   a {
     text-decoration: none;
-    cursor: pointer;
-    color: #fff;
-    border: none;
-    background: rgba(255, 255, 255, 0.1);
-    height: 48px;
-    padding: 8px 24px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 600;
-    transition: background 0.5s linear;
-    cursor: pointer;
-
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    position: relative;
+    justify-content: center;
+    padding: 1rem;
+    color: var(--heading);
+    background-color: var(--background-secondary);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: background 0.15s ease;
+    text-align: center;
+
     &:hover {
-      background: rgba(255, 255, 255, 0.2);
+      background-color: var(--background-tertiary);
     }
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
 
     &:first-child {
-      margin-right: 6px;
-      background: rgba(255, 255, 255, 0);
+      margin-right: 0.5rem;
+      background: var(--background-tertiary);
 
       &:hover {
-        background: rgba(255, 255, 255, 0.2);
+        background-color: var(--background-secondary);
       }
     }
   }
@@ -123,6 +129,7 @@ const ButtonContainer = styled.div`
 
 type NavbarState = {
   isOpen: boolean;
+  isLoggedIn: boolean;
 };
 
 export default class Navbar extends React.PureComponent<{}, NavbarState> {
@@ -130,16 +137,19 @@ export default class Navbar extends React.PureComponent<{}, NavbarState> {
     super(props);
     this.state = {
       isOpen: false,
+      isLoggedIn: false,
     };
+  }
+
+  componentDidMount() {
+    this.setState({ isLoggedIn: new Cookies().get('token') !== undefined });
   }
 
   render() {
     return (
       <Nav>
         <Logo>
-          <a href={'/'}>
-            <img alt="AtomicHashes"></img>
-          </a>
+          <a href={'/'}>AtomicHashes</a>
         </Logo>
         <Hamburger
           onClick={() => this.setState((v) => ({ isOpen: !v.isOpen }))}
@@ -155,10 +165,16 @@ export default class Navbar extends React.PureComponent<{}, NavbarState> {
           <MenuLink href={'/referral-program'}>Referral Program</MenuLink>
           <MenuLink href={'/faq'}>FAQ</MenuLink>
         </Menu>
-        <ButtonContainer>
-          <a href={'/login'}>Log In</a>
-          <a href={'/register'}>Get Started</a>
-        </ButtonContainer>
+        {this.state.isLoggedIn ? (
+          <ButtonContainer>
+            <a href={'/overview'}>Overview</a>
+          </ButtonContainer>
+        ) : (
+          <ButtonContainer>
+            <a href={'/login'}>Log In</a>
+            <a href={'/register'}>Get Started</a>
+          </ButtonContainer>
+        )}
       </Nav>
     );
   }

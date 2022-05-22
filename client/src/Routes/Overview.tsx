@@ -11,98 +11,97 @@ import icon05 from '../images/navicon05.svg';
 import package_icon from '../images/package.svg';
 
 const Container = styled.div`
+  display: flex;
   overflow: hidden;
+  flex-direction: column;
+  min-height: 100vh;
 
   @media (min-width: 1000px) {
-    display: flex;
+    flex-direction: row;
   }
 `;
 
-export const Nav = styled.div`
-  padding: 20px 0;
+const Nav = styled.div`
+  padding: 1rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  background: rgba(255, 255, 255, 0.07);
   position: sticky;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
+  flex-direction: row;
 
   @media (min-width: 1000px) {
+    padding-right: 1rem;
+    flex-direction: column;
     align-items: flex-start;
-    min-width: 300px;
-    min-height: 100vh;
   }
 `;
 
 const Menu = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  flex-direction: column;
+  align-items: center;
+  flex-direction: row;
 
   @media (min-width: 1000px) {
-    overflow: hidden;
     flex-direction: column;
+    align-items: flex-start;
     transition: max-height 0.3s ease-in;
     width: 100%;
   }
 `;
 
 const MenuLink = styled.li`
-display: flex;
-padding: 0.5rem 1rem;
-cursor: pointer;
-text-align: center;
-marging-left: 20px;
-margin-bottom: 10px;
-text-decoration: none;
-list-style-type: none;
-transition: all 0.2s ease-in;
-font-size: 17px;
-color: rgb(110, 110, 116);
-align-items: center;
+  display: flex;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  text-align: center;
+  marging-left: 20px;
+  margin-bottom: 10px;
+  text-decoration: none;
+  list-style-type: none;
+  transition: all 0.2s ease-in;
+  font-size: 17px;
+  color: rgb(110, 110, 116);
+  align-items: center;
 
-
-
-img {
+  img {
     margin-right: 5px;
-}
+  }
 
-&:hover {
+  &:hover {
     color: rgb(223, 133, 43);
 
     img {
-        filer: filter: invert(68%) sepia(12%) saturate(2357%) hue-rotate(343deg) brightness(102%) contrast(101%);
+      filter: invert(68%) sepia(12%) saturate(2357%) hue-rotate(343deg)
+        brightness(102%) contrast(101%);
     }
-}
+  }
 
-a {
+  a {
     text-decoration: none;
     color: rgb(110, 110, 116);
 
     &:hover {
-        color: rgb(223, 133, 43);
+      color: rgb(223, 133, 43);
     }
-}
+  }
 
-@media (max-width: 768px) {
+  @media (max-width: 768px) {
     &:hover {
-        background: none;
+      background: none;
     }
-}
+  }
 `;
 
 const MainSection = styled.div`
-  padding: 15px;
-  color: #fff;
-
-  @media (min-width: 1000px) {
-    width: 100%;
-  }
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  border-radius: 8px 0 0 8px;
+  border: 1px solid var(--border);
+  padding: 1rem;
+  background-color: var(--background-secondary);
 `;
 
 const ContentArea = styled.div`
@@ -134,9 +133,10 @@ const Button = styled.button`
 `;
 
 const PaymentBox = styled.div`
-  background: rgba(255, 255, 255, 0.07);
-  padding: 15px;
+  background: var(--background-tertiary);
+  padding: 1rem;
   border-radius: 8px;
+  border: 1px solid var(--border);
 
   @media (min-width: 1000px) {
     height: 320px;
@@ -183,9 +183,10 @@ const BalanceBox = styled.div`
 
 const ReferralInfo = styled.div`
   margin-top: 20px;
-  background: rgba(255, 255, 255, 0.07);
-  padding: 10px;
+  background: var(--background-tertiary);
+  padding: 1rem;
   border-radius: 8px;
+  border: 1px solid var(--border);
 
   div {
     color: #fff;
@@ -213,29 +214,28 @@ export default class Overview extends React.PureComponent {
       <Container>
         <Nav>
           <Menu>
-            <MenuLink>
-              <Menu>
-                <MenuLink>
-                  {' '}
-                  <img src={icon01} alt="" /> <a href="/overview">Overview</a>
-                </MenuLink>
-                <MenuLink>
-                  <img src={icon02} alt="" />{' '}
-                  <a href="/investment-packages">Buy a package</a>
-                </MenuLink>
-                <MenuLink>
-                  <img src={icon03} alt="" /> <a href="/payouts">Payouts</a>
-                </MenuLink>
-                <MenuLink>
-                  <img src={icon04} alt="" />{' '}
-                  <a href="/order-histroy">Order History</a>
-                </MenuLink>
-                <MenuLink>
-                  <img src={icon05} alt="" />{' '}
-                  <a href="/referral-program">Referral Program</a>
-                </MenuLink>
-              </Menu>
-            </MenuLink>
+            <Menu>
+              <MenuLink>
+                <img src={icon01} alt="" />
+                <a href="/overview">Overview</a>
+              </MenuLink>
+              <MenuLink>
+                <img src={icon02} alt="" />
+                <a href="/investment-packages">Buy a package</a>
+              </MenuLink>
+              <MenuLink>
+                <img src={icon03} alt="" />
+                <a href="/payouts">Payouts</a>
+              </MenuLink>
+              <MenuLink>
+                <img src={icon04} alt="" />
+                <a href="/order-histroy">Order History</a>
+              </MenuLink>
+              <MenuLink>
+                <img src={icon05} alt="" />
+                <a href="/referral-program">Referral Program</a>
+              </MenuLink>
+            </Menu>
           </Menu>
         </Nav>
         <MainSection>

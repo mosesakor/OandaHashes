@@ -17,9 +17,10 @@ import background2 from '../images/bg-form.svg';
 import about_image from '../images/about_image.svg';
 
 import Footer from '../Components/Footer';
+import Button from '../Components/Button';
+import Input from '../Components/Input';
 
 const Container = styled.div`
-  color: #fff;
   overflow: hidden;
   padding-bottom: 0;
   margin-bottom: 0;
@@ -35,95 +36,54 @@ const MainSection = styled.div`
 `;
 
 const Section = styled.div`
-  margin-bottom: 50px;
-  padding: 10px;
+  margin: 1rem;
+  padding: 1rem;
 `;
 
 const MainInfo = styled.div`
-max-width: 1280px;
-margin: 0 auto;
-position: relative;
-z-index: 2;
-text-align: center;
-padding: 150px 0 50px 0;
-
-h1 {
-  font-size: 40px;
-  line-height: 48px;
-}
-
-p {
-  font-size: 16px;
-}
-
-@media(min-width: 980px) {
-  max-width: 500px;
-  margin 0;
-  text-align: left;
-  padding: 50px 0px;
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 150px 0 50px 0;
 
   h1 {
-    font-size: 64px;
-    line-height: 72px;
+    font-size: 40px;
+    line-height: 48px;
+    color: var(--heading);
   }
+
   p {
-    font-size: 22px;
+    font-size: 16px;
   }
-}
+
+  @media(min-width: 980px) {
+    max-width: 500px;
+    margin 0;
+    text-align: left;
+    padding: 50px 0px;
+
+    h1 {
+      font-size: 64px;
+      line-height: 72px;
+    }
+    p {
+      font-size: 22px;
+    }
+  }
 `;
 
 const MainInfoForm = styled.div`
-display: flex;
-align-items: left;
-padding: 2px;
-position: relative;
-
-input {
-  width: 100%;
-  max-width: 350px;
-  height: 64px;
-  padding: 15px 24px;
-  border-radius: 8px;
-  background-color: #fff;
-  color: #a6a2a2;
-  font-size: 14px;
-  font-family: Gilroy,sans-serif;
-  font-weight: 600;
-}
-
-button {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 64px;
-  padding: 10px 32px;
-  border-radius: 8px;
-  background-color: #ffa244;
-  cursor: pointer;
-  transition: background .25s linear;
-  text-align: center;
-  color: buttontext;
+  flex-direction: column;
+  margin-top: 1rem;
+  gap: 0.5rem;
 
-  span {
-    color: #010001;
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: 1px;
+  @media (min-width: 980px) {
+    margin: 0;
+    flex-direction: row;
   }
-}
-
-@media(min-width: 980px) {
-  max-width: 600px;
-  margin 0;
-  text-align: left;
-  display: flex;
-
-  button {
-    margin-top: 0;
-    margin-left: 10px;
-    width: 300px;
-  }
-}
 `;
 
 const Box = styled.div`
@@ -136,10 +96,11 @@ const ContentBox = styled.div`
   text-align: center;
 
   span {
-    color: rgb(96, 185, 103);
+    color: var(--link-active);
     margin-right: 10px;
   }
   h2 {
+    color: var(--heading);
     font-size: 32px;
     line-height: 40px;
     margin-bottom: 32px;
@@ -154,7 +115,12 @@ const BrochureWrapper = styled.div`
     div {
       &:last-child,
       &:nth-child(2) {
-        border-left: 1px solid rgba(255, 255, 255, 0.1);
+        border-left: 1px solid var(--border-full);
+      }
+
+      &:nth-child(1),
+      &:nth-child(2) {
+        border-top: 0;
       }
     }
   }
@@ -162,21 +128,20 @@ const BrochureWrapper = styled.div`
 
 const Brochure = styled.div`
   padding: 15px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--border-full);
 
   img {
     width: 56px;
   }
 
   h3 {
-    margin: 0px 0px 10px;
+    color: var(--heading);
+    padding-bottom: 0.25rem;
   }
 
   p {
     margin: 0;
-    color: #6e6e74;
-    font-size: 14px;
-    line-height: 24px;
+    font-size: 0.9rem;
     font-weight: 400;
   }
 `;
@@ -197,47 +162,26 @@ const Text = styled.div`
   text-align: center;
 
   span {
-    color: rgb(96, 185, 103);
+    color: var(--link-active);
   }
 
   h2 {
-    font-size: 32px;
-    margin: 0px 0px 40px;
+    font-size: 2rem;
+    color: var(--heading);
   }
 
   h4 {
-    margin: 0px 0px 15px;
-    font-size: 18px;
+    font-size: 1.25rem;
+    color: var(--heading);
   }
 
   p {
     margin: 0px 0px 24px;
-    color: #6e6e74;
     font-size: 18px;
     line-height: 24px;
     font-weight: 400;
     max-width: 500px;
     margin: 0 auto;
-  }
-
-  button {
-    border: none;
-    font-size: 16px;
-    font-weight: 600;
-    max-width: 380px;
-    margin-top: 20px;
-    align-items: center;
-    justify-content: center;
-    height: 64px;
-    padding: 10px 32px;
-    border-radius: 8px;
-    background-color: #ffa244;
-    cursor: pointer;
-    transition: background 0.25s linear;
-
-    &:hover {
-      filter: brightness(80%);
-    }
   }
 
   @media (min-width: 980px) {
@@ -249,8 +193,9 @@ const Text = styled.div`
 
 const Packages = styled.div`
   h2 {
-    font-size: 48px;
+    font-size: 3rem;
     font-weight: 800;
+    color: var(--heading);
   }
 `;
 
@@ -259,16 +204,17 @@ const Duration = styled.ul`
 
   li {
     list-style-type: none;
-    padding: 16px 16px;
+    padding: 1rem;
     border-radius: 8px;
     text-align: center;
     margin: 8px;
     font-weight: 600;
-    font-size: 16px;
-    color: black;
+    font-size: 1rem;
+    background-color: var(--background-tertiary);
+    border: 1px solid var(--border);
 
     &:hover {
-      background-color: #ffa244;
+      background-color: var(--background-secondary);
     }
   }
 `;
@@ -304,6 +250,7 @@ const FastStart = styled.div`
 
 const Title = styled.div`
   text-align: center;
+  color: var(--heading);
 
   @media (min-width: 980px) {
     text-align: left;
@@ -326,9 +273,13 @@ const Form = styled.div`
 const Slider = styled.div``;
 
 const LastSection = styled.div`
-  border-top: 2px solid rgba(255, 255, 255, 0.07);
-  background-color: rgba(255, 255, 255, 0.07);
-  padding: 30px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  border-top: 1px solid var(--border-full);
+  border-radius: 8px 8px 0 0;
+  padding: 2rem 1rem 2rem;
 `;
 
 export default class Home extends React.PureComponent {
@@ -343,10 +294,10 @@ export default class Home extends React.PureComponent {
               <p>AtomicHashes opens access to eco-mining for everyone</p>
             </MainInfo>
             <MainInfoForm>
-              <input placeholder="Enter e-mail"></input>
-              <button>
+              <Input placeholder="Enter e-mail"></Input>
+              <Button>
                 <span>Get Started</span>
-              </button>
+              </Button>
             </MainInfoForm>
           </Box>
         </MainSection>
@@ -402,7 +353,7 @@ export default class Home extends React.PureComponent {
             </Image>
             <Text>
               <h2>
-                <span>What is</span> Greenhashes?
+                <span>What is</span> AtomicHashes?
               </h2>
               <h4>Eco mining with the latest hardware for everyone</h4>
               <p>
@@ -410,7 +361,9 @@ export default class Home extends React.PureComponent {
                 platform is intended for both beginners and professionals in the
                 field of cryptocurrency.
               </p>
-              <button>Get Started</button>
+              <Button>
+                <span>Get Started</span>
+              </Button>
             </Text>
           </About>
         </Section>
@@ -433,14 +386,16 @@ export default class Home extends React.PureComponent {
           <FastStart>
             <Title>
               <h2>
-                Try mining with GreenHashes today and get your first profit
+                Try mining with AtomicHashes today and get your first profit
                 within 24 hours
               </h2>
             </Title>
             <Form>
               <MainInfoForm>
-                <input placeholder="Enter e-mail"></input>
-                <button>Get Started</button>
+                <Input placeholder="Enter e-mail"></Input>
+                <Button>
+                  <span>Get Started</span>
+                </Button>
               </MainInfoForm>
             </Form>
           </FastStart>

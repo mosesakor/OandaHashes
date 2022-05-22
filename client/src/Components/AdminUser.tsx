@@ -1,13 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import Cookies from 'universal-cookie';
+import Button from './Button';
 
 const User = styled.div`
   display: flex;
   flex-direction: column;
   padding: 0.5rem;
-  margin: 0;
-  background-color: #1a2a2a;
+  background-color: var(--background-tertiary);
+  border: 1px solid rgba(84, 84, 84, 0.65);
   border-radius: 8px;
 
   h3 {
@@ -17,8 +18,15 @@ const User = styled.div`
   h4 {
     margin: 0;
     color: darkgray;
+
+    text-align: right;
+
     &.last {
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    span {
+        color: var(--heading)
     }
   }
 `;
@@ -29,17 +37,7 @@ const Options = styled.div`
   padding: 0;
   margin: 0;
   gap: 0.5rem;
-
-  button {
-    padding: 0.5rem;
-    margin: 0;
-    color: whitesmoke;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
-    background-color: #2a4545;
-    cursor: pointer;
-  }
+  align-self: center;
 `;
 
 type Props = {
@@ -165,12 +163,12 @@ export default class AdminUser extends React.PureComponent<Props, State> {
     return (
       <User>
         <h3>{this.state.info.username}</h3>
-        <h4>ID: {this.state.info.id}</h4>
-        <h4>Email: {this.state.info.email}</h4>
-        <h4 className="last">Balance: {this.state.info.balance}</h4>
+        <h4>ID: <span>{this.state.info.id}</span></h4>
+        <h4>Email: <span>{this.state.info.email}</span></h4>
+        <h4 className="last">Balance: <span>{this.state.info.balance}</span></h4>
         <Options>
-          <button onClick={this.delete}>Delete</button>
-          <button onClick={this.editBalance}>Edit Balance</button>
+          <Button onClick={this.delete}>Delete</Button>
+          <Button onClick={this.editBalance}>Edit Balance</Button>
         </Options>
       </User>
     );

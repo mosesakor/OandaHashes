@@ -4,10 +4,7 @@ import Cookies from 'universal-cookie';
 import AdminUser from '../Components/AdminUser';
 
 const Container = styled.div`
-  color: #fff;
   overflow: hidden;
-  padding-bottom: 0;
-  margin-bottom: 0;
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -24,8 +21,6 @@ const Sidebar = styled.div`
   display: flex;
   flex-direction: column;
   padding: 0 1rem;
-  background-color: #1a2a2a;
-  border-radius: 0 8px 8px 0;
 
   h1 {
     margin: 0.5rem 0;
@@ -37,13 +32,10 @@ const Sidebar = styled.div`
 
   .option {
     display: flex;
-    padding: 0.5rem;
-    border-radius: 8px;
-    background-color: black;
+    margin: 1rem 0;
 
     &.active {
-      background-color: #2a4545;
-      color: whitesmoke;
+      color: var(--link-active);
     }
   }
 `;
@@ -52,14 +44,34 @@ const MainSection = styled.div`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  padding: 0 1rem;
+  padding: 1rem;
   overflow-x: hidden;
   overflow-y: auto;
+  background-color: var(--background-secondary);
+  border-radius: 8px 0 0 8px;
+  border: 1px solid var(--border);
+
+  h1 {
+    color: var(--link-active);
+  }
 
   .list {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+
+    @media (min-width: 648px) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media (min-width: 980px) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    c @media (min-width: 1280px) {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
     flex-direction: column;
-    gap: 0.5rem;
+    margin-top: 1rem;
   }
 `;
 
@@ -113,7 +125,7 @@ export default class Admin extends React.PureComponent<{}, State> {
             <h3 className="option active">User Management</h3>
           </Sidebar>
           <MainSection>
-            <h2>User Management</h2>
+            <h1>User Management</h1>
             <div className="list">
               {this.state.users.map((v) => (
                 <AdminUser id={v} update={this.update} key={v} />

@@ -12,29 +12,29 @@ import star1 from '../images/star-v1.svg';
 // import star2 from '../images/star-v2.svg';
 
 const Container = styled.div`
-  height: 460px;
-  margin: 0 auto;
+  display: flex;
 
   .swiper {
-    width: 100%;
-    height: 100%;
   }
 
   .swiper-pagination-bullet {
-    background: #ffa244;
+    background: var(--link-active);
   }
 
   .swiper-slide {
-    min-height: 300px;
+    display: flex;
+    height: fit-content;
+    margin-bottom: 4rem;
 
     div {
-      padding: 20px;
+      padding: 1rem;
       margin: 0 auto;
       width: 80%;
       min-height: 70%;
       min-height: 300px;
       border-radius: 8px;
-      background-color: rgba(255, 255, 255, 0.07);
+      background-color: var(--background-secondary);
+      border: 1px solid var(--border);
 
       section {
         dsiplay: flex;
@@ -60,27 +60,23 @@ const Container = styled.div`
       }
 
       h4 {
-        margin-top: 10px;
-        margin-bottom: 15px;
+        margin: 0.5rem 0;
         color: #fff;
-        font-size: 24px;
-        font-family: Gilroy, sans-serif;
+        font-size: 2rem;
         font-weight: 700;
       }
 
-      P {
+      p {
         padding-bottom: 15px;
-        color: #6e6e74;
-        font-size: 14px;
+        font-size: 1rem;
         font-weight: 400;
-        line-height: 24px;
       }
 
       span {
-        font-size: 10px;
+        font-size: 0.8rem;
         text-transform: uppercase;
         font-weight: 600;
-        letter-spacing: 2px;
+        letter-spacing: 0.15rem;
       }
     }
   }
@@ -99,9 +95,12 @@ export default class Carousel extends React.PureComponent<{}, CarouselState> {
     super(props);
     this.state = { slidesPerView: 1 };
 
-    this.handleResize();
     this.handleResize = this.handleResize.bind(this);
     window.addEventListener('resize', this.handleResize);
+  }
+
+  componentDidMount() {
+    this.handleResize();
   }
 
   handleResize() {

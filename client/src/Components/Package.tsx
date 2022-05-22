@@ -1,54 +1,50 @@
 import React from 'react';
 import styled from 'styled-components';
+import Button from './Button';
 import { PackageInfo } from './PackageData';
 
 const Item = styled.div`
-  background-color: rgba(255, 255, 255, 0.07);
-  min-height: 435px;
-  padding: 0px 8px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background-secondary);
+  padding: 1rem;
   border-radius: 8px;
-
-  @media (max-width: 980px) {
-    flex: 0 1 50%;
-  }
-
-  @media (max-width: 1280px) {
-    flex: 0 1 33.33333%;
-  }
-
-  hr {
-  }
+  border: 1px solid var(--border);
 `;
 
 const Heading = styled.div`
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  padding: 20px 0px;
+  align-items: center;
+  padding-bottom: 1rem;
   border-bottom: 1px solid #6e6e74;
   margin-bottom: 10px;
 
   h2 {
-    font-size: 18px !important;
+    font-size: 1.25rem !important;
   }
   img {
-    width: 56px;
+    width: 2rem;
   }
 `;
 
 const Body = styled.div`
-  padding: 20px 0;
+  flex-grow: 1;
+  padding: 1rem 0;
 
   div {
     display: flex;
     justify-content: space-between;
-    font-size: 14px;
+    font-size: 1rem;
     padding: 0;
     margin: 0;
 
     p {
       margin: 6px 0;
+      color: var(--heading);
       &:first-child {
-        color: #6e6e74;
+        color: var(--text);
       }
     }
   }
@@ -59,31 +55,15 @@ const Body = styled.div`
 `;
 
 const Footing = styled.div`
+  display: flex;
+  flex-direction: column;
   margin: 0;
 
   p {
     font-size: 40px;
-    margin: 15px 0 0;
-  }
-
-  button {
-    border: none;
-    font-size: 16px;
-    font-weight: 600;
-    width: 100%;
-    margin-top: 20px;
-    align-items: center;
-    justify-content: center;
-    height: 64px;
-    padding: 10px 32px;
-    border-radius: 8px;
-    background-color: #ffa244;
-    cursor: pointer;
-    transition: background 0.25s linear;
-
-    &:hover {
-      filter: brightness(80%);
-    }
+    margin: 0.5rem 0;
+    text-align: right;
+    color: var(--heading);
   }
 `;
 
@@ -119,7 +99,9 @@ export default class Package extends React.PureComponent<PackageProps> {
         </Body>
         <Footing>
           <p>${this.props.info.price}</p>
-          <button>Get Started</button>
+          <Button>
+            <span>I want this package</span>
+          </Button>
         </Footing>
       </Item>
     );

@@ -4,6 +4,8 @@ import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
 // import background from '../images/eqp3.svg';
 import background2 from '../images/bg-form.svg';
+import Button from '../Components/Button';
+import Input from '../Components/Input';
 // import bg4 from '../images/bg4.svg';
 
 const background = '';
@@ -64,49 +66,15 @@ p {
 `;
 
 const MainInfoForm = styled.div`
-margin: 0 auto;
-text-align: center;
-max-width: 580px;
-
-input {
-  width: 80%;
-  height: 20px;
-  padding: 15px 24px;
-  border-radius: 8px;
-  background-color: #fff;
-  color: #a6a2a2;
-  font-size: 14px;
-  font-family: Gilroy,sans-serif;
-  font-weight: 600;
-}
-
-button {
-  border: none;
-  max-width: 380px;
-  margin-top: 12px;
-  align-items: center;
-  justify-content: center;
-  height: 55px;
-  font-weight: 600;
-  padding: 10px;
-  border-radius: 8px;
-  background-color: #ffa244;
-  cursor: pointer;
-  transition: background .25s linear;
-}
-
-@media(min-width: 980px) {
-  max-width: 600px;
-  margin 0;
-  text-align: left;
   display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  gap: 0.5rem;
 
-  button {
-    margin-top: 0;
-    margin-left: 10px;
-    width: 300px;
+  @media (min-width: 980px) {
+    margin: 0;
+    flex-direction: row;
   }
-}
 `;
 
 const Box = styled.div`
@@ -119,7 +87,6 @@ const FastStart = styled.div`
   background-image: url(${background2});
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: #131213;
   padding: 150px 20px 20px 20px;
 
   @media (min-width: 980px) {
@@ -150,9 +117,13 @@ const Form = styled.div`
 `;
 
 const LastSection = styled.div`
-  border-top: 2px solid rgba(255, 255, 255, 0.07);
-  background-color: rgba(255, 255, 255, 0.07);
-  padding: 30px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  border-top: 1px solid var(--border-full);
+  border-radius: 8px 8px 0 0;
+  padding: 2rem 1rem 2rem;
 `;
 
 const Items = styled.div`
@@ -400,14 +371,14 @@ export default class Equipment extends React.PureComponent {
           <FastStart>
             <Title>
               <h2>
-                Try mining with GreenHashes today and get your first profit
+                Try mining with AtomicHashes today and get your first profit
                 within 24 hours
               </h2>
             </Title>
             <Form>
               <MainInfoForm>
-                <input placeholder="Enter e-mail"></input>
-                <button>Get Started</button>
+                <Input placeholder="Enter e-mail"></Input>
+                <Button>Get Started</Button>
               </MainInfoForm>
             </Form>
           </FastStart>

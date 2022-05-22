@@ -37,20 +37,17 @@ const Indicator = styled.div`
   align-items: center;
 `;
 
-type AccordionProps = {
+type Props = {
   title: string;
-  children: any;
+  children: React.ReactNode;
 };
 
-type AccordionState = {
+type State = {
   collapse: boolean;
 };
 
-export default class Accordion extends React.PureComponent<
-  AccordionProps,
-  AccordionState
-> {
-  constructor(props: AccordionProps | Readonly<AccordionProps>) {
+export default class Accordion extends React.PureComponent<Props, State> {
+  constructor(props: Props | Readonly<Props>) {
     super(props);
     this.state = {
       collapse: false,

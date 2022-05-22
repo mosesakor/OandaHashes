@@ -6,68 +6,27 @@ import tel from '../images/tel.svg';
 import fb from '../images/fb.svg';
 import twt from '../images/twt.svg';
 
-const Container = styled.div`
-  @media (min-width: 980px) {
-    display: flex;
-  }
-`;
-
-const Menu = styled.div`
-  border: 1px solid red;
+const Container = styled.footer`
   display: flex;
-  justify-content: center;
-`;
-
-const MenuLink = styled.a`
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  text-align: center;
-  marging-left: 20px;
-  text-decoration: none;
-  color: white;
-  transition: all 0.2s ease-in;
-  font-size: 17px;
-
-  &:hover {
-    border-radius: 5px;
-    color: #ffa244;
+  flex-direction: column;
+  @media (min-width: 980px) {
+    flex-direction: row;
   }
-
-  @media (max-width: 768px) {
-    &:hover {
-      background: none;
-    }
-  }
-`;
-
-export const Nav = styled.div`
-  display: none;
-  padding: 20px 0;
-  margin: 0 auto;
-  flex-wrap: wrap;
-  background: transparent;
-  position: sticky;
-  top: 0;
-  left: 0;
-  right: 0;
 `;
 
 const Socials = styled.div`
-display: flex;
-align-items: center;
-flex-direction: column;
-margin-top: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 10px;
 
-img {
+  img {
     color: #fff;
     background-repeat: no-repeat;
     width: 35%;
     position: relative;
     top: 20%;
-}
-
-
-}
+  }
 `;
 
 const Links = styled.div`
@@ -114,14 +73,12 @@ const Mail = styled.div`
   }
 
   a {
-    color: #ffa244;
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: 600;
   }
 
   span {
-    color: #6e6e74;
-    font-size: 12px;
+    font-size: 0.9rem;
     max-width: 260px;
     display: block;
     padding: 5px;
@@ -132,15 +89,6 @@ export default class Footer extends React.PureComponent {
   render() {
     return (
       <Container>
-        <Nav>
-          <Menu>
-            <MenuLink>About</MenuLink>
-            <MenuLink>Investmend packages</MenuLink>
-            <MenuLink>Equipment</MenuLink>
-            <MenuLink>Referral Program</MenuLink>
-            <MenuLink>FAQ</MenuLink>
-          </Menu>
-        </Nav>
         <Socials>
           <Links>
             <div>
@@ -167,7 +115,7 @@ export default class Footer extends React.PureComponent {
         </Socials>
         <Mail>
           <div>
-            <a href="mailto:support@atomichashes.io">support@atomichashes.io</a>
+            <a href="mailto:support@AtomicHashes.io">support@AtomicHashes.io</a>
           </div>
           <div>
             <span>
@@ -178,7 +126,7 @@ export default class Footer extends React.PureComponent {
         </Mail>
         <Mail>
           <div>
-            <a href="tg.io">Telegram Atomichashes</a>
+            <a href="tg.io">Telegram AtomicHashes</a>
           </div>
           <div>
             <span>

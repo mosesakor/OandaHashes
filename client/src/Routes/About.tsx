@@ -174,7 +174,7 @@ const Text = styled.div`
     border-radius: 8px;
     background-color: #ffa244;
     cursor: pointer;
-    transition: background 0.25s linear;
+    transition: background 0.25s ease;
 
     &:hover {
       filter: brightness(80%);
@@ -189,9 +189,13 @@ const Text = styled.div`
 `;
 
 const LastSection = styled.div`
-  border-top: 2px solid rgba(255, 255, 255, 0.07);
-  background-color: rgba(255, 255, 255, 0.07);
-  padding: 30px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  border-top: 1px solid var(--border-full);
+  border-radius: 8px 8px 0 0;
+  padding: 2rem 1rem 2rem;
 `;
 
 export default class About extends React.PureComponent {
