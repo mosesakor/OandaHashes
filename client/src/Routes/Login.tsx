@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Navbar from '../Components/Navbar';
 import background from '../images/atom_background.svg';
 import Footer from '../Components/Footer';
-import { Cookies } from 'react-cookie';
+import Cookies from 'universal-cookie';
 
 const Container = styled.div`
   color: #fff;
@@ -142,17 +142,13 @@ const FormPage = styled.div`
   }
 `;
 
-type LoginProps = {
-  cookies?: Cookies;
-};
-
 type LoginState = {
   email: string;
   password: string;
 };
 
-export default class Login extends React.PureComponent<LoginProps, LoginState> {
-  constructor(props: LoginProps | Readonly<LoginProps>) {
+export default class Login extends React.PureComponent<{}, LoginState> {
+  constructor(props: {} | Readonly<{}>) {
     super(props);
     this.state = {
       email: '',
@@ -185,8 +181,10 @@ export default class Login extends React.PureComponent<LoginProps, LoginState> {
     } = await resp.json();
     if (data.type === 0) {
       alert(`Login successful`);
-      this.props.cookies?.set('token', data.token, {
-        secure: true,
+      const cookies = new Cookies();
+      cookies.set('token', data.token, {
+        secure: !window.location.origin.includes('localhost'),
+        sameSite: true,
       });
     } else {
       alert(`Login failed, ${data.type}, ${data.name}, ${data.message}`);
