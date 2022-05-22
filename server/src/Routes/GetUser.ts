@@ -29,6 +29,7 @@ export default {
             user: {
               id: user.id,
               username: user.username,
+              isStaff: user.isStaff,
             },
           };
           if (user.id === res.unwrap().id || res.unwrap().isStaff) {
