@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Cookies from 'universal-cookie';
+import Button from './Button';
 
 // import Atom from '../images/atom.png';
 
@@ -47,7 +48,7 @@ const MenuLink = styled.a`
   }
 `;
 
-export const Nav = styled.div`
+const Nav = styled.div`
   padding: 20px 0;
   display: flex;
   justify-content: space-between;
@@ -94,7 +95,7 @@ const ButtonContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1rem;
+    padding: 0.5rem;
     color: var(--heading);
     background-color: var(--background-secondary);
     border: 1px solid var(--border);
@@ -120,6 +121,12 @@ const ButtonContainer = styled.div`
     }
   }
 
+  button {
+    color: var(--heading);
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
   @media (max-width: 1000px) {
     display: flex;
     justify-content: flex-end;
@@ -139,10 +146,16 @@ export default class Navbar extends React.PureComponent<{}, NavbarState> {
       isOpen: false,
       isLoggedIn: false,
     };
+    this.logout = this.logout.bind(this);
   }
 
   componentDidMount() {
     this.setState({ isLoggedIn: new Cookies().get('token') !== undefined });
+  }
+
+  logout() {
+    new Cookies().remove('token');
+    this.setState({ isLoggedIn: false });
   }
 
   render() {
@@ -168,6 +181,7 @@ export default class Navbar extends React.PureComponent<{}, NavbarState> {
         {this.state.isLoggedIn ? (
           <ButtonContainer>
             <a href={'/overview'}>Overview</a>
+            <Button onClick={this.logout}>Logout</Button>
           </ButtonContainer>
         ) : (
           <ButtonContainer>
