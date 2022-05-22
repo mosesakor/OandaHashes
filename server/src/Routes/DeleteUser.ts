@@ -4,7 +4,7 @@ import checkToken from '../Utils/CheckToken';
 
 export default {
   route: (router: Router) => {
-    router.get('/api/users/:id(\\d+)', async (ctx, next) => {
+    router.delete('/api/users/:id(\\d+)', async (ctx, next) => {
       const res = await checkToken(
         ctx.users,
         ctx.request.headers.authorization || '',
@@ -12,26 +12,24 @@ export default {
       if (!ctx.request.headers.authorization || res.isErr) {
         ctx.status = 401;
         ctx.body = {
-          type: ResponseType.Unauthenticated,
+          type: res.isErr ? res.error.reason : ResponseType.Unauthenticated,
+        };
+      } else if (!res.unwrap().isStaff) {
+        ctx.status = 401;
+        ctx.body = {
+          type: res.isErr ? res.error.reason : ResponseType.Unauthorised,
         };
       } else {
-        const user = await ctx.users.findOne({ id: ctx.params.id });
+        const delRes = await ctx.users.deleteOne({ id: ctx.params.id });
 
-        if (!user) {
+        if (delRes.deletedCount <= 0) {
           ctx.status = 400;
           ctx.body = {
             type: ResponseType.UserNotFound,
           };
         } else {
           ctx.status = 200;
-          ctx.body = {
-            type: ResponseType.Success,
-            user: {
-              id: user.id,
-              username: user.username,
-            },
-          };
-          if (user.id === res.unwrap()) ctx.body.user.email = user.email;
+          ctx.body = { type: ResponseType.Success };
         }
       }
 

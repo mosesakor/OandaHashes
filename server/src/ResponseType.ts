@@ -4,7 +4,7 @@ const enum ResponseType {
   SchemaValidationFailed,
   UserNotFound,
   Unauthenticated,
-  Unauthorized,
+  Unauthorised,
   AlreadyLoggedIn,
   InternalServerError = 0xffff,
 }

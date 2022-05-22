@@ -13,14 +13,20 @@ import Register from './Routes/Register';
 import Login from './Routes/Login';
 import User from './Models/User';
 import ErrorHandler from './ErrorHandler';
-import GetUserInfo from './Routes/GetUserInfo';
+import GetUser from './Routes/GetUser';
+import GetUsers from './Routes/GetUsers';
+import DeleteUser from './Routes/DeleteUser';
+import UpdateUser from './Routes/UpdateUser';
 
 const app = new Koa();
 const router = new Router();
 
 Login.route(router);
 Register.route(router);
-GetUserInfo.route(router);
+GetUsers.route(router);
+GetUser.route(router);
+DeleteUser.route(router);
+UpdateUser.route(router);
 
 declare module 'koa' {
   interface BaseContext {

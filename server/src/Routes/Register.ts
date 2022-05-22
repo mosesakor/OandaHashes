@@ -43,6 +43,8 @@ export default {
             username: data.username,
             email: data.email,
             password: await Bcrypt.hash(data.password, 10),
+            isStaff: false,
+            balance: 0,
           };
 
           await ctx.users.insertOne(user);

@@ -1,4 +1,5 @@
 import './App.css';
+import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Home from './Routes/Home';
@@ -12,7 +13,7 @@ import Overview from './Routes/Overview';
 import Payouts from './Routes/Payouts';
 import Registration from './Routes/Registration';
 import Login from './Routes/Login';
-import React from 'react';
+import Admin from './Routes/Admin';
 
 export default class App extends React.Component {
   render() {
@@ -30,6 +31,7 @@ export default class App extends React.Component {
           <Route path="/payouts" element={<Payouts />} />
           <Route path="/register" element={<Registration />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/admin" element={<Admin />} />
         </Routes>
       </BrowserRouter>
     );
