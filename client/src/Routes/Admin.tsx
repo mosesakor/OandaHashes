@@ -64,11 +64,7 @@ const MainSection = styled.div`
 `;
 
 type State = {
-  users: {
-    id: string;
-    username: string;
-    email: string;
-  }[];
+  users: string[];
 };
 
 export default class Admin extends React.PureComponent<{}, State> {
@@ -92,7 +88,7 @@ export default class Admin extends React.PureComponent<{}, State> {
       type: number;
       name?: string;
       message?: string;
-      users?: { id: string; username: string; email: string }[];
+      users?: string[];
     } = await resp.json();
 
     if (data.type === 0) {
@@ -120,7 +116,7 @@ export default class Admin extends React.PureComponent<{}, State> {
             <h2>User Management</h2>
             <div className="list">
               {this.state.users.map((v) => (
-                <AdminUser id={v.id} update={this.update} key={v.id} />
+                <AdminUser id={v} update={this.update} key={v} />
               ))}
             </div>
           </MainSection>

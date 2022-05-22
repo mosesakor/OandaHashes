@@ -23,7 +23,7 @@ export default {
         ctx.status = 200;
         ctx.body = {
           type: ResponseType.Success,
-          users: (await ctx.users.find().toArray()).map((v) => ({ id: v.id })),
+          users: (await ctx.users.find().toArray()).map((v) => v.id),
         };
       }
 
