@@ -295,9 +295,7 @@ export default class OrderPayment extends React.PureComponent<
   }
 
   handleAmount(e: any) {
-    this.setState((state) => {
-      return { amount: state.count * state.packageType.btc };
-    });
+    this.setState((v) => ({ amount: v.count * v.packageType.btc }));
     console.log(this.state.amount);
   }
 
@@ -373,12 +371,9 @@ export default class OrderPayment extends React.PureComponent<
                   <p>Amount</p>
                   <button
                     onClick={() =>
-                      this.setState((state) => {
-                        return {
-                          count:
-                            state.count === 1 ? state.count : state.count - 1,
-                        };
-                      })
+                      this.setState((v) => ({
+                        count: v.count === 1 ? v.count : v.count - 1,
+                      }))
                     }
                   >
                     -
@@ -386,11 +381,7 @@ export default class OrderPayment extends React.PureComponent<
                   <span>{this.state.count}</span>
                   <button
                     onClick={() =>
-                      this.setState((state) => {
-                        return {
-                          count: state.count + 1,
-                        };
-                      })
+                      this.setState((v) => ({ count: v.count + 1 }))
                     }
                   >
                     +

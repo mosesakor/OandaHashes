@@ -61,11 +61,7 @@ export default class Accordion extends React.PureComponent<
     return (
       <Container>
         <Title
-          onClick={() =>
-            this.setState((state) => {
-              return { collapse: !state.collapse };
-            })
-          }
+          onClick={() => this.setState((v) => ({ collapse: !v.collapse }))}
           clicked={this.state.collapse}
         >
           <Name>

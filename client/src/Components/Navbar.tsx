@@ -142,11 +142,7 @@ export default class Navbar extends React.PureComponent<{}, NavbarState> {
           </a>
         </Logo>
         <Hamburger
-          onClick={() =>
-            this.setState((state) => {
-              return { isOpen: !state.isOpen };
-            })
-          }
+          onClick={() => this.setState((v) => ({ isOpen: !v.isOpen }))}
         >
           <span />
           <span />
