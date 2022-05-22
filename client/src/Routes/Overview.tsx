@@ -9,6 +9,7 @@ import icon03 from '../images/navicon03.svg';
 import icon04 from '../images/navicon04.svg';
 import icon05 from '../images/navicon05.svg';
 import package_icon from '../images/package.svg';
+import Cookies from 'universal-cookie';
 
 const Container = styled.div`
   display: flex;
@@ -208,7 +209,58 @@ const Body = styled.div`
   }
 `;
 
-export default class Overview extends React.PureComponent {
+type State = {
+  info: {
+    id: string;
+    username: string;
+    email: string;
+    balance: number;
+  };
+};
+
+export default class Overview extends React.PureComponent<{}, State> {
+  constructor(props: {} | Readonly<{}>) {
+    super(props);
+
+    const data = JSON.parse(
+      atob((new Cookies().get('token') as string).split('.')[1]),
+    );
+
+    this.state = {
+      info: {
+        id: data.id,
+        username: '',
+        email: '',
+        balance: 0,
+      },
+    };
+  }
+  async componentDidMount() {
+    const token = new Cookies().get('token');
+
+    const resp = await fetch(
+      `http://localhost:8080/api/users/${this.state.info.id}`,
+      {
+        headers: {
+          Authorization: token,
+        },
+      },
+    );
+    const data: {
+      type: number;
+      name?: string;
+      message?: string;
+      user?: { id: string; username: string; email: string; balance: number };
+    } = await resp.json();
+
+    if (data.type === 0) {
+      const user = data.user!;
+      this.setState({ info: user });
+    } else {
+      alert(`Error, ${data.type}, ${data.name}, ${data.message}`);
+    }
+  }
+
   render() {
     return (
       <Container>
@@ -251,7 +303,7 @@ export default class Overview extends React.PureComponent {
                 </Header>
                 <Button>Cash Out</Button>
               </Heading>
-              <Balance>$ 0</Balance>
+              <Balance>$ {this.state.info.balance}</Balance>
               <BalanceBox>
                 <div>
                   <p>TOTAL PROFIT</p>

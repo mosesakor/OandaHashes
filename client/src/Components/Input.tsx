@@ -20,13 +20,23 @@ const InputContainer = styled.input`
 
 type Props = {
   placeholder?: string;
+  type?: string;
+  name?: string;
+  required?: boolean;
   children?: React.ReactNode;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => any;
 };
 
 export default class Input extends React.PureComponent<Props> {
   render() {
     return (
-      <InputContainer placeholder={this.props.placeholder}>
+      <InputContainer
+        type={this.props.type}
+        name={this.props.name}
+        required={this.props.required}
+        placeholder={this.props.placeholder}
+        onChange={this.props.onChange}
+      >
         {this.props.children}
       </InputContainer>
     );

@@ -4,12 +4,11 @@ import Navbar from '../Components/Navbar';
 import background from '../images/atom_background.svg';
 import Footer from '../Components/Footer';
 import Cookies from 'universal-cookie';
+import Input from '../Components/Input';
+import Button from '../Components/Button';
 
 const Container = styled.div`
-  color: #fff;
   overflow: hidden;
-  padding-bottom: 0;
-  margin-bottom: 0;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -23,72 +22,43 @@ const MainSection = styled.div`
   padding: 0 15px 30px;
   background-attachment: fixed;
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 `;
 
 const FormContainer = styled.div`
   display: flex;
-  -webkit-box-pack: start;
-  justify-content: flex-start;
-  max-width: 1280px;
-  min-height: 460px;
-  margin: 50px auto;
+  align-items: center;
+  justify-content: center;
   position: relative;
-
-  flex: 0 1 50%;
+  justify-self: center;
+  flex-grow: 1;
 
   form {
-    background-color: rgba(26, 49, 28, 0.6);
+    background-color: var(--background-secondary);
     border-radius: 8px;
-    flex: 0 1 50%;
-    display: block;
-    max-width: 520px;
-    padding: 32px;
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
   }
 `;
 
 const FormContent = styled.div`
   max-width: 520px;
-
-  button {
-    border: none;
-    font-size: 16px;
-    font-weight: 600;
-    max-width: 380px;
-    margin-top: 20px;
-    align-items: center;
-    justify-content: center;
-    height: 64px;
-    padding: 10px 32px;
-    border-radius: 8px;
-    background-color: #ffa244;
-    cursor: pointer;
-    transition: background 0.25s linear;
-
-    &:hover {
-      filter: brightness(80%);
-    }
-  }
+  display: flex;
+  flex-direction: column;
 `;
 
 const FormField = styled.div`
   margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
 
   label {
     display: block;
     margin-bottom: 10px;
     color: #fff;
-    font-size: 14px;
-    font-weight: 600;
-  }
-
-  input {
-    width: 100%;
-    height: 64px;
-    padding: 18px 24px;
-    background #fff;
-    border-radius: 8px;
-    border: 0 solid #fff;
-    color: #010001;
     font-size: 14px;
     font-weight: 600;
   }
@@ -211,7 +181,7 @@ export default class Login extends React.PureComponent<{}, LoginState> {
               <FormContent>
                 <FormField>
                   <label>Email/Username</label>
-                  <input
+                  <Input
                     type="email"
                     name="email"
                     required
@@ -220,7 +190,7 @@ export default class Login extends React.PureComponent<{}, LoginState> {
                 </FormField>
                 <FormField>
                   <label>Password</label>
-                  <input
+                  <Input
                     type="password"
                     name="password"
                     required
@@ -232,9 +202,9 @@ export default class Login extends React.PureComponent<{}, LoginState> {
                 <FormLink>
                   <a href="/forgot-password">Forgot your password?</a>
                 </FormLink>
-                <button onClick={this.onClick}>
+                <Button onClick={this.onClick}>
                   <span>Login</span>
-                </button>
+                </Button>
               </FormContent>
             </form>
           </FormContainer>

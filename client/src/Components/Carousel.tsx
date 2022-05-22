@@ -86,11 +86,11 @@ const Container = styled.div`
   }
 `;
 
-type CarouselState = {
+type State = {
   slidesPerView: number;
 };
 
-export default class Carousel extends React.PureComponent<{}, CarouselState> {
+export default class Carousel extends React.PureComponent<{}, State> {
   constructor(props: {} | Readonly<{}>) {
     super(props);
     this.state = { slidesPerView: 1 };

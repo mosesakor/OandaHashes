@@ -6,19 +6,19 @@ import Button from './Button';
 const User = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 0.5rem;
+  padding: 1rem;
   background-color: var(--background-tertiary);
   border: 1px solid rgba(84, 84, 84, 0.65);
   border-radius: 8px;
 
   h3 {
     margin: 0;
+    color: var(--heading);
   }
 
   h4 {
     margin: 0;
     color: darkgray;
-
     text-align: right;
 
     &.last {
@@ -165,7 +165,7 @@ export default class AdminUser extends React.PureComponent<Props, State> {
         <h3>{this.state.info.username}</h3>
         <h4>ID: <span>{this.state.info.id}</span></h4>
         <h4>Email: <span>{this.state.info.email}</span></h4>
-        <h4 className="last">Balance: <span>{this.state.info.balance}</span></h4>
+        <h4 className="last"><span>{this.state.info.balance}$</span></h4>
         <Options>
           <Button onClick={this.delete}>Delete</Button>
           <Button onClick={this.editBalance}>Edit Balance</Button>

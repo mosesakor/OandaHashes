@@ -24,6 +24,7 @@ const Sidebar = styled.div`
 
   h1 {
     margin: 0.5rem 0;
+    color: var(--heading);
   }
 
   a {
@@ -52,7 +53,7 @@ const MainSection = styled.div`
   border: 1px solid var(--border);
 
   h1 {
-    color: var(--link-active);
+    color: var(--heading);
   }
 
   .list {

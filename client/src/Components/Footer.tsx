@@ -8,7 +8,9 @@ import twt from '../images/twt.svg';
 
 const Container = styled.footer`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  gap: 1rem;
+
   @media (min-width: 980px) {
     flex-direction: row;
   }
@@ -17,31 +19,32 @@ const Container = styled.footer`
 const Socials = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
-  margin-top: 10px;
 
   img {
     color: #fff;
     background-repeat: no-repeat;
     width: 35%;
     position: relative;
-    top: 20%;
   }
 `;
 
 const Links = styled.div`
   display: flex;
+  gap: 0.5rem;
   margin-bottom: 10px;
 
   div {
-    font-size: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: var(--background-secondary);
+    border: 1px solid var(--border);
     border-radius: 50%;
-    width: 48px;
-    height: 48px;
-    margin-right: 15px;
-    text-align: center;
-    vertical-align: middle;
     cursor: pointer;
 
     &:nth-child(3) {
@@ -53,12 +56,9 @@ const Links = styled.div`
 `;
 
 const Copyright = styled.div`
-  color: #6e6e74;
-  font-size: 12px;
-
-  span {
-    margin-right: 15px;
-  }
+  display: flex;
+  font-size: 0.8rem;
+  gap: 1rem;
 `;
 
 const Mail = styled.div`
@@ -92,19 +92,15 @@ export default class Footer extends React.PureComponent {
         <Socials>
           <Links>
             <div>
-              {' '}
               <img src={ig} alt="instagram" />
             </div>
             <div>
-              {' '}
               <img src={tel} alt="telegram" />
             </div>
             <div>
-              {' '}
               <img src={fb} alt="facebook" />
             </div>
             <div>
-              {' '}
               <img src={twt} alt="twitter" />
             </div>
           </Links>
