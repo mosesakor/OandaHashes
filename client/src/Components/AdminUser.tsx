@@ -26,7 +26,7 @@ const User = styled.div`
     }
 
     span {
-        color: var(--heading)
+      color: var(--heading);
     }
   }
 `;
@@ -75,14 +75,11 @@ export default class AdminUser extends React.PureComponent<Props, State> {
   async update() {
     const token = new Cookies().get('token');
 
-    const resp = await fetch(
-      `http://localhost:8080/api/users/${this.props.id}`,
-      {
-        headers: {
-          Authorization: token,
-        },
+    const resp = await fetch(`http://localhost:8080/users/${this.props.id}`, {
+      headers: {
+        Authorization: token,
       },
-    );
+    });
     const data: {
       type: number;
       name?: string;
@@ -105,15 +102,12 @@ export default class AdminUser extends React.PureComponent<Props, State> {
   async delete(e: React.MouseEvent) {
     const token = new Cookies().get('token');
 
-    const resp = await fetch(
-      `http://localhost:8080/api/users/${this.props.id}`,
-      {
-        method: 'DELETE',
-        headers: {
-          Authorization: token,
-        },
+    const resp = await fetch(`http://localhost:8080/users/${this.props.id}`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: token,
       },
-    );
+    });
     const data: {
       type: number;
       name?: string;
@@ -136,17 +130,14 @@ export default class AdminUser extends React.PureComponent<Props, State> {
       return;
     }
 
-    const resp = await fetch(
-      `http://localhost:8080/api/users/${this.props.id}`,
-      {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: token,
-        },
-        body: JSON.stringify({ balance: balance }),
+    const resp = await fetch(`http://localhost:8080/users/${this.props.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: token,
       },
-    );
+      body: JSON.stringify({ balance: balance }),
+    });
     const data: {
       type: number;
       name?: string;
@@ -163,9 +154,15 @@ export default class AdminUser extends React.PureComponent<Props, State> {
     return (
       <User>
         <h3>{this.state.info.username}</h3>
-        <h4>ID: <span>{this.state.info.id}</span></h4>
-        <h4>Email: <span>{this.state.info.email}</span></h4>
-        <h4 className="last"><span>{this.state.info.balance}$</span></h4>
+        <h4>
+          ID: <span>{this.state.info.id}</span>
+        </h4>
+        <h4>
+          Email: <span>{this.state.info.email}</span>
+        </h4>
+        <h4 className="last">
+          <span>{this.state.info.balance}$</span>
+        </h4>
         <Options>
           <Button onClick={this.delete}>Delete</Button>
           <Button onClick={this.editBalance}>Edit Balance</Button>

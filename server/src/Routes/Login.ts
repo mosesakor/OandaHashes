@@ -7,7 +7,7 @@ import ResponseType from '../ResponseType';
 export default {
   route: (router: Router) => {
     router.post(
-      '/api/login',
+      '/login',
       validator({
         body: Joi.object().keys({
           email: Joi.string().email().required(),

@@ -8,7 +8,7 @@ import ResponseType from '../ResponseType';
 export default {
   route: (router: Router) => {
     router.post(
-      '/api/register',
+      '/register',
       validator({
         body: Joi.object().keys({
           username: Joi.string().required(),

@@ -140,7 +140,7 @@ export default class Login extends React.PureComponent<{}, LoginState> {
       alert('Please fill in all fields');
       return;
     }
-    const resp = await fetch('http://localhost:8080/api/login', {
+    const resp = await fetch('http://localhost:8080/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

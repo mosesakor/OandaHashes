@@ -4,7 +4,7 @@ import checkToken from '../Utils/CheckToken';
 
 export default {
   route: (router: Router) => {
-    router.get('/api/users/:id(\\d+)', async (ctx, next) => {
+    router.get('/users/:id(\\d+)', async (ctx, next) => {
       const res = await checkToken(
         ctx.users,
         ctx.request.headers.authorization || '',

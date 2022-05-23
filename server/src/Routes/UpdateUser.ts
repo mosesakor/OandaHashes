@@ -7,7 +7,7 @@ import checkToken from '../Utils/CheckToken';
 export default {
   route: (router: Router) => {
     router.patch(
-      '/api/users/:id(\\d+)',
+      '/users/:id(\\d+)',
       validator({
         body: Joi.object().keys({
           username: Joi.string().optional(),

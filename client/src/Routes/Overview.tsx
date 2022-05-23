@@ -236,7 +236,7 @@ export default class Overview extends React.PureComponent<{}, State> {
     const token = new Cookies().get('token');
 
     const resp = await fetch(
-      `http://localhost:8080/api/users/${this.state.info.id}`,
+      `http://localhost:8080/users/${this.state.info.id}`,
       {
         headers: {
           Authorization: token,
