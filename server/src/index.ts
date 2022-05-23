@@ -7,6 +7,7 @@ import bodyParser from 'koa-bodyparser';
 import mongo from 'koa-mongo';
 import Boom from '@hapi/boom';
 import * as MongoDB from 'mongodb';
+import dotenv from 'dotenv';
 
 import Register from './Routes/Register';
 import Login from './Routes/Login';
@@ -16,6 +17,8 @@ import GetUser from './Routes/GetUser';
 import GetUsers from './Routes/GetUsers';
 import DeleteUser from './Routes/DeleteUser';
 import UpdateUser from './Routes/UpdateUser';
+
+dotenv.config();
 
 const app = new Koa();
 const router = new Router();
@@ -35,7 +38,7 @@ declare module 'koa' {
 
 app
   .use(ErrorHandler.handler)
-  .use(mongo({ db: 'atomichashes' }))
+  .use(mongo({ db: 'atomichashes', url: process.env.MONGO_URL }))
   .use(async (ctx, next) => {
     Object.defineProperty(ctx, 'users', {
       get() {
