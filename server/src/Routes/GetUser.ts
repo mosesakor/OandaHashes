@@ -35,6 +35,7 @@ export default {
           if (user.id === res.unwrap().id || res.unwrap().isStaff) {
             ctx.body.user.email = user.email;
             ctx.body.user.balance = user.balance;
+            ctx.body.user.profit = user.profit;
           }
         }
       }

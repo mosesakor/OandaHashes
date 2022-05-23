@@ -10,6 +10,7 @@ import icon04 from '../images/navicon04.svg';
 import icon05 from '../images/navicon05.svg';
 import package_icon from '../images/package.svg';
 import Cookies from 'universal-cookie';
+import Button from '../Components/Button';
 
 const Container = styled.div`
   display: flex;
@@ -40,9 +41,11 @@ const Nav = styled.div`
 
 const Menu = styled.div`
   display: flex;
+  padding: 0.5rem;
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
+  gap: 0.5rem;
 
   @media (min-width: 1000px) {
     flex-direction: column;
@@ -50,48 +53,52 @@ const Menu = styled.div`
     transition: max-height 0.3s ease-in;
     width: 100%;
   }
+
+  a {
+    color: var(--text);
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--heading);
+    }
+  }
 `;
 
 const MenuLink = styled.li`
   display: flex;
-  padding: 0.5rem 1rem;
   cursor: pointer;
   text-align: center;
-  marging-left: 20px;
-  margin-bottom: 10px;
   text-decoration: none;
   list-style-type: none;
-  transition: all 0.2s ease-in;
-  font-size: 17px;
+  transition: color 0.15s ease, filter 0.15s ease;
+  font-size: 1rem;
   color: rgb(110, 110, 116);
   align-items: center;
+  gap: 0.5rem;
 
-  img {
-    margin-right: 5px;
+  &.active {
+    color: var(--link-active);
+
+    img {
+      filter: invert(52%) sepia(36%) saturate(4362%) hue-rotate(169deg)
+        brightness(104%) contrast(107%);
+    }
   }
 
   &:hover {
-    color: rgb(223, 133, 43);
+    color: var(--heading);
 
     img {
-      filter: invert(68%) sepia(12%) saturate(2357%) hue-rotate(343deg)
-        brightness(102%) contrast(101%);
+      filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(235deg)
+        brightness(103%) contrast(101%);
     }
   }
 
   a {
     text-decoration: none;
-    color: rgb(110, 110, 116);
-
-    &:hover {
-      color: rgb(223, 133, 43);
-    }
-  }
-
-  @media (max-width: 768px) {
-    &:hover {
-      background: none;
-    }
+    color: inherit;
+    white-space: nowrap;
   }
 `;
 
@@ -106,10 +113,13 @@ const MainSection = styled.div`
 `;
 
 const ContentArea = styled.div`
+  display: flex;
+  flex-direction: column;
+
   @media (min-width: 1000px) {
     width: 100%;
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 `;
 
@@ -117,20 +127,6 @@ const Heading = styled.div`
   margin-bottom: 24px;
   display: flex;
   justify-content: space-between;
-  font-family: 'Chakra Petch', sans-serif;
-`;
-
-const Button = styled.button`
-  min-height: 48px;
-  padding: 10px 24px;
-  border-radius: 90px;
-  background: 0 0;
-  border: 1px solid #df852b;
-  color: #fff;
-  font-size: 14px;
-  font-family: Montserrat, sans-serif;
-  font-weight: 600;
-  cursor: pointer;
 `;
 
 const PaymentBox = styled.div`
@@ -147,18 +143,19 @@ const PaymentBox = styled.div`
 
 const Header = styled.div`
   display: flex;
+  align-items: center;
+  gap: 0.5rem;
 
   h3 {
-    font-size: 12px;
+    font-size: 1rem;
     font-weight: 600;
-    margin-left: 10px;
+    color: var(--heading);
   }
 `;
 
 const Balance = styled.div`
-  color: #ffa244;
+  color: var(--link-active);
   font-size: 56px;
-  font-family: 'Chakra Petch', sans-serif;
   font-weight: 500;
   margin-bottom: 15px;
 `;
@@ -189,10 +186,6 @@ const ReferralInfo = styled.div`
   border-radius: 8px;
   border: 1px solid var(--border);
 
-  div {
-    color: #fff;
-  }
-
   @media (min-width: 1000px) {
     margin-top: 0;
   }
@@ -209,13 +202,16 @@ const Body = styled.div`
   }
 `;
 
+type User = {
+  id: string;
+  username: string;
+  email: string;
+  balance: number;
+  profit: { daily: number; total: number };
+};
+
 type State = {
-  info: {
-    id: string;
-    username: string;
-    email: string;
-    balance: number;
-  };
+  info: User;
 };
 
 export default class Overview extends React.PureComponent<{}, State> {
@@ -232,6 +228,7 @@ export default class Overview extends React.PureComponent<{}, State> {
         username: '',
         email: '',
         balance: 0,
+        profit: { daily: 0, total: 0 },
       },
     };
   }
@@ -250,7 +247,7 @@ export default class Overview extends React.PureComponent<{}, State> {
       type: number;
       name?: string;
       message?: string;
-      user?: { id: string; username: string; email: string; balance: number };
+      user?: User;
     } = await resp.json();
 
     if (data.type === 0) {
@@ -267,7 +264,8 @@ export default class Overview extends React.PureComponent<{}, State> {
         <Nav>
           <Menu>
             <Menu>
-              <MenuLink>
+              <a href="/">← Back</a>
+              <MenuLink className="active">
                 <img src={icon01} alt="" />
                 <a href="/overview">Overview</a>
               </MenuLink>
@@ -307,15 +305,15 @@ export default class Overview extends React.PureComponent<{}, State> {
               <BalanceBox>
                 <div>
                   <p>TOTAL PROFIT</p>
-                  <span>$ 0.00</span>
+                  <span>$ {this.state.info.profit.total}</span>
                 </div>
                 <div>
                   <p>BTC/USD</p>
                   <span>$ 38,720.24</span>
                 </div>
                 <div>
-                  <p>PROFIT FOR MONTH</p>
-                  <span>$ 0.00</span>
+                  <p>DAILY PROFIT</p>
+                  <span>$ {this.state.info.profit.daily}</span>
                 </div>
               </BalanceBox>
             </PaymentBox>

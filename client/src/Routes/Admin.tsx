@@ -28,7 +28,11 @@ const Sidebar = styled.div`
   }
 
   a {
-    color: whitesmoke;
+    color: var(--text);
+
+    &:hover {
+      color: var(--heading);
+    }
   }
 
   .option {

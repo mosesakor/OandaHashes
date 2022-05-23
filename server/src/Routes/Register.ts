@@ -45,6 +45,7 @@ export default {
             password: await Bcrypt.hash(data.password, 10),
             isStaff: false,
             balance: 0,
+            profit: { daily: 0, total: 0 },
           };
 
           await ctx.users.insertOne(user);

@@ -37,7 +37,13 @@ declare module 'koa' {
 app
   .use(ErrorHandler.handler)
   .use(mongo({ db: 'atomichashes' }))
-  .use(cors({ origin: '*' }))
+  .use(
+    cors({
+      origin: '*',
+      allowHeaders: ['Content-Type', 'Authorization'],
+      allowMethods: ['GET', 'POST', 'PATCH', 'DELETE'],
+    }),
+  )
   .use(async (ctx, next) => {
     Object.defineProperty(ctx, 'users', {
       get() {
