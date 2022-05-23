@@ -14,6 +14,10 @@ export default {
           email: Joi.string().email().optional(),
           password: Joi.string().optional(),
           balance: Joi.number().optional(),
+          profit: Joi.object().optional().keys({
+            total: Joi.number().optional(),
+            daily: Joi.number().optional(),
+          }),
         }),
       }),
       async (ctx, next) => {
@@ -61,6 +65,10 @@ export default {
           if (ctx.request.body.balance) {
             (req as any).$set.balance = ctx.request.body.balance;
           }
+          if (ctx.request.body.profit) {
+            (req as any).$set.profit = ctx.request.body.profit;
+          }
+
           const updRes = await ctx.users.updateOne({ id: ctx.params.id }, req);
 
           if (updRes.matchedCount <= 0) {
