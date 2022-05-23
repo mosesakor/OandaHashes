@@ -1,5 +1,4 @@
 import Koa from 'koa';
-import cors from '@koa/cors';
 import Router from '@koa/router';
 import serve from 'koa-static';
 import path from 'path';
@@ -37,13 +36,6 @@ declare module 'koa' {
 app
   .use(ErrorHandler.handler)
   .use(mongo({ db: 'atomichashes' }))
-  .use(
-    cors({
-      origin: '*',
-      allowHeaders: ['Content-Type', 'Authorization'],
-      allowMethods: ['GET', 'POST', 'PATCH', 'DELETE'],
-    }),
-  )
   .use(async (ctx, next) => {
     Object.defineProperty(ctx, 'users', {
       get() {

@@ -75,7 +75,7 @@ export default class AdminUser extends React.PureComponent<Props, State> {
   async update() {
     const token = new Cookies().get('token');
 
-    const resp = await fetch(`http://localhost:8080/users/${this.props.id}`, {
+    const resp = await fetch(`/api/users/${this.props.id}`, {
       headers: {
         Authorization: token,
       },
@@ -102,7 +102,7 @@ export default class AdminUser extends React.PureComponent<Props, State> {
   async delete(e: React.MouseEvent) {
     const token = new Cookies().get('token');
 
-    const resp = await fetch(`http://localhost:8080/users/${this.props.id}`, {
+    const resp = await fetch(`/api/users/${this.props.id}`, {
       method: 'DELETE',
       headers: {
         Authorization: token,
@@ -130,7 +130,7 @@ export default class AdminUser extends React.PureComponent<Props, State> {
       return;
     }
 
-    const resp = await fetch(`http://localhost:8080/users/${this.props.id}`, {
+    const resp = await fetch(`/api/users/${this.props.id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',

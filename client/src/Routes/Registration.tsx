@@ -173,7 +173,7 @@ export default class Registration extends React.PureComponent<
       alert('Passwords do not match');
       return;
     }
-    const resp = await fetch('http://localhost:8080/register', {
+    const resp = await fetch('/api/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

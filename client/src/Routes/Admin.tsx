@@ -96,7 +96,7 @@ export default class Admin extends React.PureComponent<{}, State> {
   async update() {
     const token = new Cookies().get('token');
 
-    const resp = await fetch(`http://localhost:8080/users`, {
+    const resp = await fetch(`/api/users`, {
       headers: {
         Authorization: token,
       },
