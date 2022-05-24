@@ -6,6 +6,7 @@ import EquipmentView from "@/views/EquipmentView.vue";
 import LoginView from "@/views/LoginView.vue";
 import OverviewView from "@/views/OverviewView.vue";
 import AdminView from "@/views/AdminView.vue";
+import RegisterView from "@/views/RegisterView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,6 +16,7 @@ const router = createRouter({
     { path: "/packages", component: PackagesView },
     { path: "/equipment", component: EquipmentView },
     { path: "/login", component: LoginView },
+    { path: "/register", component: RegisterView },
     { path: "/overview", component: OverviewView },
     { path: "/admin", component: AdminView },
   ],
