@@ -22,6 +22,7 @@ const handleChange = (e: Event) => {
     :name="name"
     :required="required"
     @change="handleChange"
+    @input="handleChange"
   />
 </template>
 
