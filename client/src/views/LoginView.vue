@@ -41,7 +41,7 @@ const onClick = async (e: Event) => {
   switch (data.type) {
     case 0:
       cookies.set("token", data.token, {
-        secure: !window.origin.includes("localhost"),
+        secure: location.protocol === "https:",
       });
       store.update();
       router.push("/overview");
