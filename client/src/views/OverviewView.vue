@@ -199,8 +199,7 @@ nav {
     color: var(--link-active);
 
     img {
-      filter: invert(52%) sepia(36%) saturate(4362%) hue-rotate(169deg)
-        brightness(104%) contrast(107%);
+      filter: invert(52%) sepia(36%) saturate(4362%) hue-rotate(169deg) brightness(104%) contrast(107%);
     }
   }
 
@@ -208,8 +207,7 @@ nav {
     color: var(--heading);
 
     img {
-      filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(235deg)
-        brightness(103%) contrast(101%);
+      filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(235deg) brightness(103%) contrast(101%);
     }
   }
 }
@@ -263,8 +261,7 @@ nav {
   }
 
   img {
-    filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(235deg)
-      brightness(103%) contrast(101%);
+    filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(235deg) brightness(103%) contrast(101%);
   }
 }
 
@@ -286,8 +283,7 @@ nav {
     color: var(--link-active);
   }
 
-  @media (min-width: 1000px) {
-  }
+  @media (min-width: 1000px) {}
 }
 
 .referral {
