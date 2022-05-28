@@ -17,7 +17,7 @@ const logout = (e: Event) => {
 </script>
 <template>
   <nav>
-    <RouterLink class="logo" to="/">AtomicHashes</RouterLink>
+    <RouterLink class="logo" to="/"><span>Oanda</span>Hashes</RouterLink>
     <div class="hamburger" @click="open = !open">
       <span />
       <span />
@@ -52,6 +52,7 @@ nav {
   background: transparent;
   position: sticky;
   z-index: 100;
+
 }
 
 .menu {
@@ -106,8 +107,13 @@ a {
   }
 
   &.logo {
+    font-size: 32px;
+    font-weight: 800;
     img {
       width: 100px;
+    }
+    span {
+      color: white;
     }
   }
 }

@@ -60,8 +60,8 @@ fetch(`/api/users/${tokenData.id}`, {
         <RouterLink class="link" to="/packages">
           <img src="@/assets/navicon02.svg" alt="" /> Buy a package
         </RouterLink>
-        <RouterLink class="link" to="/payouts">
-          <img src="@/assets/navicon03.svg" alt="" /> Payouts
+        <RouterLink class="link" to="/deposit">
+          <img src="@/assets/navicon03.svg" alt="" /> Deposit
         </RouterLink>
         <RouterLink class="link" to="/order-histroy">
           <img src="@/assets/navicon04.svg" alt="" /> Order History
