@@ -24,7 +24,7 @@
     </div>
     <div class="mail">
       <div>
-        <a href="mailto:support@AtomicHashes.io">support@AtomicHashes.io</a>
+        <a href="mailto:oandainvestmentcompany@gmail.com">oandainvestmentcompany@gmail.com</a>
       </div>
       <div>
         <span>Ask questions or send suggestions to us</span>
@@ -32,7 +32,7 @@
     </div>
     <div class="mail">
       <div>
-        <a href="tg.io">AtomicHashes Telegram</a>
+        <a href="tg.io">OandaHashes Telegram</a>
       </div>
       <div>
         <span>Join our telegram for useful information on investments</span>
@@ -112,7 +112,7 @@ footer {
   text-align: center;
 
   a {
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 600;
   }
 

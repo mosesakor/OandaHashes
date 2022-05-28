@@ -1,11 +1,17 @@
 <script setup lang="ts">
+import { RouterLink, useRouter } from "vue-router";
 withDefaults(defineProps<{ disabled?: boolean }>(), { disabled: false });
+
+const router = useRouter();
 </script>
 
 <template>
-  <button :class="{ button: true, disabled }" :disabled="disabled">
-    <slot />
-  </button>
+  <RouterLink to="/deposit">
+    <button :class="{ button: true, disabled }" :disabled="disabled">
+      <slot />
+    </button>
+  </RouterLink>
+
 </template>
 
 <style scoped lang="less">
