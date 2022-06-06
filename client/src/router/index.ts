@@ -8,7 +8,8 @@ import LoginView from "@/views/LoginView.vue";
 import OverviewView from "@/views/OverviewView.vue";
 import AdminView from "@/views/AdminView.vue";
 import RegisterView from "@/views/RegisterView.vue";
-import DepositView from "@/views/DepositView.vue"
+import DepositView from "@/views/DepositView.vue";
+import WithdrawalView from "@/views/WithdrawalView.vue"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -23,6 +24,7 @@ const router = createRouter({
     { path: "/overview", component: OverviewView },
     { path: "/admin", component: AdminView },
     { path: "/deposit", component: DepositView },
+    { path: "/withdrawal", component: WithdrawalView },
   ],
 });
 

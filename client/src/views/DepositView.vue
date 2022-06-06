@@ -78,8 +78,8 @@ const handleAmount = () => {
                 <RouterLink class="link" to="/deposit">
                     <img src="@/assets/navicon03.svg" alt="" /> Deposit
                 </RouterLink>
-                <RouterLink class="link" to="/order-histroy">
-                    <img src="@/assets/navicon04.svg" alt="" /> Order History
+                <RouterLink class="link" to="/withdrawal">Withdrawal
+                    <img src="@/assets/navicon04.svg" alt="" /> 
                 </RouterLink>
                 <RouterLink class="link" to="/referral-program">
                     <img src="@/assets/navicon05.svg" alt="" /> Referral Program
@@ -219,21 +219,22 @@ nav {
     color: inherit;
     white-space: nowrap;
 
-    &.router-link-active {
-        color: var(--link-active);
 
-        img {
-            filter: invert(52%) sepia(36%) saturate(4362%) hue-rotate(169deg) brightness(104%) contrast(107%);
-        }
+  &.router-link-active {
+    color: var(--link-active);
+
+    img {
+      filter: invert(58%) sepia(84%) saturate(451%) hue-rotate(71deg) brightness(94%) contrast(94%);
     }
+  }
 
-    &:hover {
-        color: var(--heading);
+  &:hover {
+    color: var(--link-active) !important;
 
-        img {
-            filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(235deg) brightness(103%) contrast(101%);
-        }
+    img {
+      filter: invert(58%) sepia(84%) saturate(451%) hue-rotate(71deg) brightness(94%) contrast(94%);
     }
+  }
 }
 
 .main-section {

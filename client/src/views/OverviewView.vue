@@ -5,6 +5,20 @@ import FormButton from "@/components/FormButton.vue";
 import type User from "@/models/User";
 import { useStore } from "@/stores/user";
 import { useCookies } from "@vueuse/integrations/useCookies";
+import 'virtual:fonts.css';
+import { Line } from "vue-chartjs";
+import {
+  Chart as ChartJS,
+  Title,
+  Tooltip,
+  Legend,
+  LineElement,
+  LinearScale,
+  PointElement,
+  CategoryScale,
+} from "chart.js";
+
+
 
 const store = useStore();
 const router = useRouter();
@@ -47,6 +61,51 @@ fetch(`/api/users/${tokenData.id}`, {
     info.value = data.user as User;
   }
 });
+
+ChartJS.register(
+  Title,
+  Tooltip,
+  Legend,
+  LineElement,
+  LinearScale,
+  PointElement,
+  CategoryScale
+);
+
+const chartData = {
+  labels: ["January", "February", "March", "April", "May", "June", "July"],
+  datasets: [
+    {
+      label: "Monthly Profit",
+      backgroundColor: "#60b967",
+      data: [40, 40, 40, 40, 40, 40, 40],
+    },
+  ],
+};
+
+const chartOptions = {
+  responsive: true,
+  maintainAspectRatio: false,
+  borderColor: 'green',
+  tickColor: '',
+};
+
+withDefaults(
+  defineProps<{
+    chartId?: string;
+    width?: number;
+    height?: number;
+    cssClasses?: string;
+    styles?: Partial<CSSStyleDeclaration>;
+  }>(),
+  {
+    chartId: "line-chart",
+    width: 400,
+    height: 400,
+    cssClasses: "",
+    styles: {},
+  }
+);
 </script>
 
 <template>
@@ -63,8 +122,8 @@ fetch(`/api/users/${tokenData.id}`, {
         <RouterLink class="link" to="/deposit">
           <img src="@/assets/navicon03.svg" alt="" /> Deposit
         </RouterLink>
-        <RouterLink class="link" to="/order-histroy">
-          <img src="@/assets/navicon04.svg" alt="" /> Order History
+        <RouterLink class="link" to="/withdrawal">
+          <img src="@/assets/navicon04.svg" alt="" /> Withdrawal
         </RouterLink>
         <RouterLink class="link" to="/referral-program">
           <img src="@/assets/navicon05.svg" alt="" /> Referral Program
@@ -82,13 +141,13 @@ fetch(`/api/users/${tokenData.id}`, {
               <img src="@/assets/package.svg" alt="" />
               <h3>BALANCE</h3>
             </div>
-            <FormButton>Cash Out</FormButton>
+            <FormButton>Withdraw</FormButton>
           </div>
-          <div class="balance">${{ info.balance }}</div>
+          <div class="balance">${{ Number(info.balance).toLocaleString() }}</div>
           <div class="balance-box">
             <div>
               <p>TOTAL PROFIT</p>
-              <span>${{ info.profit.total }}</span>
+              <span>${{ Number(info.profit.total).toLocaleString() }}</span>
             </div>
             <div>
               <p>BTC/USD</p>
@@ -96,7 +155,7 @@ fetch(`/api/users/${tokenData.id}`, {
             </div>
             <div>
               <p>DAILY PROFIT</p>
-              <span>${{ info.profit.daily }}</span>
+              <span>${{ Number(info.profit.daily).toLocaleString() }}</span>
             </div>
           </div>
         </div>
@@ -119,6 +178,13 @@ fetch(`/api/users/${tokenData.id}`, {
           </div>
         </div>
       </div>
+      <div class="chart">
+        <h>
+          <Line :chartData="chartData" :chartOptions="chartOptions" :chartId="chartId" :width="width" :height="height"
+            :cssClasses="cssClasses" :styles="styles" />
+        </h>
+      </div>
+
     </div>
   </main>
 </template>
@@ -199,15 +265,15 @@ nav {
     color: var(--link-active);
 
     img {
-      filter: invert(52%) sepia(36%) saturate(4362%) hue-rotate(169deg) brightness(104%) contrast(107%);
+      filter: invert(58%) sepia(84%) saturate(451%) hue-rotate(71deg) brightness(94%) contrast(94%);
     }
   }
 
   &:hover {
-    color: var(--heading);
+    color: var(--link-active) !important;
 
     img {
-      filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(235deg) brightness(103%) contrast(101%);
+      filter: invert(58%) sepia(84%) saturate(451%) hue-rotate(71deg) brightness(94%) contrast(94%);
     }
   }
 }
@@ -232,6 +298,7 @@ nav {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  font-family: 'Chakra Petch', sans-serif;
 
   @media (min-width: 1000px) {
     width: 100%;
@@ -307,5 +374,13 @@ nav {
     font-weight: 600;
     color: rgb(96, 185, 103);
   }
+}
+
+.chart {
+  margin-top: 20px;
+  background: var(--background-tertiary);
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
 }
 </style>

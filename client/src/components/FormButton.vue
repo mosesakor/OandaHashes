@@ -15,6 +15,10 @@ const router = useRouter();
 </template>
 
 <style scoped lang="less">
+
+a {
+  text-decoration: none;
+}
 .button {
   display: flex;
   align-items: center;

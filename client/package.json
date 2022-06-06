@@ -9,12 +9,17 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@fontsource/chakra-petch": "^4.5.7",
+    "@types/chart.js": "^2.9.37",
     "@vueuse/core": "^8.5.0",
     "@vueuse/integrations": "^8.5.0",
+    "chart.js": "^3.8.0",
+    "moment": "^2.29.3",
     "pinia": "^2.0.13",
     "swiper": "^8.1.5",
     "universal-cookie": "^4.0.4",
     "vue": "^3.2.33",
+    "vue-chartjs": "^4.1.1",
     "vue-router": "^4.0.14"
   },
   "devDependencies": {
@@ -32,6 +37,7 @@
     "prettier": "^2.5.1",
     "typescript": "~4.6.3",
     "vite": "^2.9.5",
+    "vite-plugin-fonts": "^0.4.0",
     "vue-tsc": "^0.34.7"
   }
 }
