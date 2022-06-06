@@ -103,7 +103,6 @@ withDefaults(
     width: 400,
     height: 400,
     cssClasses: "",
-    styles: {},
   }
 );
 </script>
