@@ -2,6 +2,54 @@
 import moment from 'moment'
 import NavigationBar from "../components/NavigationBar.vue";
 import PageFooter from "../components/PageFooter.vue";
+import { RouterLink, useRouter } from "vue-router";
+import { ref } from "vue";
+import FormButton from "@/components/FormButton.vue";
+import type User from "@/models/User";
+import { useStore } from "@/stores/user";
+import { useCookies } from "@vueuse/integrations/useCookies";
+
+const store = useStore();
+const router = useRouter();
+const cookies = useCookies(["token"]);
+
+if (!store.loggedIn) {
+  router.push("/login");
+}
+
+const info = ref<User>({
+  id: "",
+  username: "",
+  email: "",
+  balance: 0,
+  profit: { daily: 0, total: 0 },
+} as User);
+
+const tokenData: { id: string } = JSON.parse(
+  atob(cookies.get("token").split(".")[1])
+);
+
+fetch(`/api/users/${tokenData.id}`, {
+  headers: {
+    Authorization: cookies.get("token"),
+  },
+}).then(async (resp) => {
+  const data: {
+    type: number;
+    name?: string;
+    message?: string;
+    user?: User;
+  } = await resp.json();
+
+  if (data.type !== 0) {
+    alert(`Error, ${data.type}, ${data.name}, ${data.message}`);
+    cookies.remove("token");
+    store.update();
+    router.push("login");
+  } else {
+    info.value = data.user as User;
+  }
+});
 
 </script>
 
@@ -41,7 +89,7 @@ import PageFooter from "../components/PageFooter.vue";
                             </div>
                         </div>
                         <div class="body">
-                            <p>BTC 0</p>
+                            <p>{{ Number(info.profit.total).toLocaleString() }}</p>
                             <div class="balance-box">
                                 <div class="">
                                     <p>WITHDRAWAL LOCKED:</p>
@@ -69,6 +117,37 @@ import PageFooter from "../components/PageFooter.vue";
                             </div>
                             <button>Send</button>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bank-details">
+                <div class="form">
+                    <div>
+                        <label for="name">Account Holder Name:</label>
+                        <input />
+                    </div>
+                    <div>
+                        <label for="name">Bank Name:</label>
+                        <input />
+                    </div>
+                    <div>
+                        <label for="name">IBAN:</label>
+                        <input />
+                    </div>
+                    <div>
+                        <label for="name">Swift Code:</label>
+                        <input />
+                    </div>
+                    <div>
+                        <label for="name">City:</label>
+                        <input />
+                    </div>
+                    <div>
+                        <label for="name">Bank Account Number:</label>
+                        <input />
+                    </div>
+                    <div class="submit">
+                        <RouterLink to="/overview"> <button class="button">Submit</button></RouterLink>
                     </div>
                 </div>
             </div>
@@ -145,21 +224,21 @@ nav {
     white-space: nowrap;
 
 
-  &.router-link-active {
-    color: var(--link-active);
+    &.router-link-active {
+        color: var(--link-active);
 
-    img {
-      filter: invert(58%) sepia(84%) saturate(451%) hue-rotate(71deg) brightness(94%) contrast(94%);
+        img {
+            filter: invert(58%) sepia(84%) saturate(451%) hue-rotate(71deg) brightness(94%) contrast(94%);
+        }
     }
-  }
 
-  &:hover {
-    color: var(--link-active) !important;
+    &:hover {
+        color: var(--link-active) !important;
 
-    img {
-      filter: invert(58%) sepia(84%) saturate(451%) hue-rotate(71deg) brightness(94%) contrast(94%);
+        img {
+            filter: invert(58%) sepia(84%) saturate(451%) hue-rotate(71deg) brightness(94%) contrast(94%);
+        }
     }
-  }
 }
 
 .main-section {
@@ -169,7 +248,7 @@ nav {
     border-radius: 8px 0 0 8px;
     border: 1px solid var(--border);
     padding: 1rem;
-    background-color: var(--background-secondary);
+    background-color: var(--background-tertiary);
 }
 
 .content-area {
@@ -185,7 +264,8 @@ nav {
 }
 
 .payout {
-    background: rgba(255, 255, 255, 0.07);
+    background: var(--background-tertiary);
+    border: 1px solid var(--border);
     padding: 15px;
     border-radius: 8px;
 
@@ -288,6 +368,82 @@ nav {
 
     @media (min-width: 1000px) {
         margin-top: 0;
+    }
+}
+
+.bank-details {
+    margin-top: 20px;
+    background: var(--background-tertiary);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+
+.form {
+
+    div {
+        min-height: 48px;
+        display: flex;
+
+        a {
+            margin: 0 auto;
+        }
+
+        @media (max-width: 1000px) {
+            flex-direction: column;
+        }
+    }
+
+    label {
+        text-align: right;
+        margin-right: 10px;
+        font-weight: 800;
+        width: 25%;
+
+        @media (max-width: 1000px) {
+            text-align: center;
+            margin-right: 0;
+            width: 100%;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+    }
+
+    input {
+        width: 75%;
+        height: 40px;
+        background: var(--background-tertiary);
+        border: 1px solid #60b967;
+        color: #60b967;
+        font-size: 14px;
+        font-family: Montserrat, sans-serif;
+        font-weight: 500;
+        padding: 0 24px;
+
+        @media (max-width: 1000px) {
+            width: 100%;
+        }
+    }
+
+
+    .button {
+        min-height: 48px;
+        padding: 10px 54px;
+        border-radius: 90px;
+        background: #df852b;
+        border: 1px solid #df852b;
+        color: #fff;
+        font-size: 14px;
+        font-family: Montserrat, sans-serif;
+        font-weight: 600;
+        cursor: pointer;
+        margin: 0 auto;
+        margin-top: 20px;
+        width: 20rem;
+    }
+
+    .submit {
+        text-align: center !important;
     }
 }
 </style>
