@@ -98,7 +98,7 @@ const handleAmount = () => {
                         </p>
                         <div class="address">
                             <span>Payment address</span>
-                            <p>3BrjvTxezwv8w2UnVScPES5BZGQ5491nsq</p>
+                            <p>bc1qp704haqrgn8dsv207uhmt296klp0llg9l0xex</p>
                         </div>
                         <div class="barcode">
                             <img src="@/assets/barcode.png" alt="barcode" />
