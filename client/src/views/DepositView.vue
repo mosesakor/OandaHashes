@@ -29,7 +29,7 @@ const getPackage = (package_name: string) => {
             packageType.value = PackageData[1];
             break;
         case 'Gold 1':
-            packageType.value  = PackageData[2];
+            packageType.value = PackageData[2];
             break;
         case 'Gold 2':
             packageType.value = PackageData[3];
@@ -78,8 +78,8 @@ const handleAmount = () => {
                 <RouterLink class="link" to="/deposit">
                     <img src="@/assets/navicon03.svg" alt="" /> Deposit
                 </RouterLink>
-                <RouterLink class="link" to="/withdrawal">Withdrawal
-                    <img src="@/assets/navicon04.svg" alt="" /> 
+                <RouterLink class="link" to="/withdrawal">
+                    <img src="@/assets/navicon04.svg" alt="" /> Withdrawal
                 </RouterLink>
                 <RouterLink class="link" to="/referral-program">
                     <img src="@/assets/navicon05.svg" alt="" /> Referral Program
@@ -94,7 +94,7 @@ const handleAmount = () => {
                 <div class="payment">
                     <div class="payment-info">
                         <p>
-                            Please send <span>{{amount}}</span> BTC to the following address or scan the QR code.
+                            Please send <span>{{ amount }}</span> BTC to the following address or scan the QR code.
                         </p>
                         <div class="address">
                             <span>Payment address</span>
@@ -146,6 +146,9 @@ const handleAmount = () => {
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="buy-section">
+                <a href="https://www.moonpay.com/">Buy Bitcoin</a>
             </div>
         </div>
     </main>
@@ -220,21 +223,21 @@ nav {
     white-space: nowrap;
 
 
-  &.router-link-active {
-    color: var(--link-active);
+    &.router-link-active {
+        color: var(--link-active);
 
-    img {
-      filter: invert(58%) sepia(84%) saturate(451%) hue-rotate(71deg) brightness(94%) contrast(94%);
+        img {
+            filter: invert(58%) sepia(84%) saturate(451%) hue-rotate(71deg) brightness(94%) contrast(94%);
+        }
     }
-  }
 
-  &:hover {
-    color: var(--link-active) !important;
+    &:hover {
+        color: var(--link-active) !important;
 
-    img {
-      filter: invert(58%) sepia(84%) saturate(451%) hue-rotate(71deg) brightness(94%) contrast(94%);
+        img {
+            filter: invert(58%) sepia(84%) saturate(451%) hue-rotate(71deg) brightness(94%) contrast(94%);
+        }
     }
-  }
 }
 
 .main-section {
@@ -307,6 +310,27 @@ nav {
         min-height: 500px;
         margin-top: 0;
     }
+}
+
+.buy-section {
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.07);
+    padding: 15px;
+    text-align: center;
+
+    a {
+        display: inline-block;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        background: #63c5da;
+        color: white;
+        padding: 20px 150px;
+        font-weight: bold;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
 }
 
 .header {
