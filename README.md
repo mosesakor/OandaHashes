@@ -1,6 +1,6 @@
-# Atomichashes
+# OandaHashes
 
-# BUILD SETUP
+## BUILD SETUP
 
 ### install dependencies
 ```
